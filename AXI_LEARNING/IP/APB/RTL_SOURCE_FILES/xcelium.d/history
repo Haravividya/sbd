@@ -1,0 +1,11 @@
+//
+// File created by:  xrun
+// Do not modify this file
+
+s1::(10Apr2023:13:13:54):( xrun APB_Master.sv APB_Protocol.sv apb_slave_dmreg_top.sv )
+s2::(10Apr2023:13:14:01):( xrun -sv APB_Master.sv APB_Protocol.sv apb_slave_dmreg_top.sv )
+s3::(10Apr2023:13:14:24):( xrun -sv APB_Master.sv apb_slave_dmreg_top.sv )
+s4::(10Apr2023:13:15:04):( xrun -sv APB_Master.sv )
+s5::(10Apr2023:13:15:16):( xrun -sv12 APB_Master.sv )
+s6::(10Apr2023:13:15:23):( xrun -sv APB_Master.sv )
+s7::(10Apr2023:13:23:57):( xrun -sv APB_Master.sv )

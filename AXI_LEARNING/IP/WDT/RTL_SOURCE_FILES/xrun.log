@@ -1,0 +1,60 @@
+xrun(64): 20.09-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.09-s009: Started on Apr 10, 2023 at 12:57:59 IST
+xrun
+	WDT_COUNTER.sv
+	WDT_REG_FILE.sv
+	WDT_TOP.sv
+file: WDT_COUNTER.sv
+	module worklib.WDT_COUNTER:sv
+		errors: 0, warnings: 0
+file: WDT_REG_FILE.sv
+	module worklib.WDT_REG_FILE:sv
+		errors: 0, warnings: 0
+file: WDT_TOP.sv
+	module worklib.wdt_top:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		wdt_top
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+WDT_COUNTER wdt_counter_inst
+                           |
+xmelab: *W,CUVDSI (./WDT_TOP.sv,29|27): 2 input ports were not connected by dot-star:
+xmelab: (./WDT_COUNTER.sv,10): reload_count
+xmelab: (./WDT_COUNTER.sv,18): wdt_enable
+
+WDT_REG_FILE wdt_reg_file_inst
+                             |
+xmelab: *W,CUVDSO (./WDT_TOP.sv,54|29): 2 output ports were not connected by dot-star:
+xmelab: (./WDT_REG_FILE.sv,7): wdt_enable
+xmelab: (./WDT_REG_FILE.sv,14): reload_count
+
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.WDT_REG_FILE:sv <0x59652900>
+			streams:   8, words:  3837
+		worklib.WDT_COUNTER:sv <0x1091ff60>
+			streams:  15, words:  4533
+		worklib.wdt_top:sv <0x6ea8cbaa>
+			streams:  17, words:  3816
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 3       3
+		Registers:              33      33
+		Scalar wires:           23       -
+		Vectored wires:         10       -
+		Always blocks:           8       8
+		Cont. assignments:       3       3
+		Pseudo assignments:     17      17
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.wdt_top:sv
+Loading snapshot worklib.wdt_top:sv .................... Done
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /tools/cadence_march2021/XCELIUM2009/tools/xcelium/files/xmsimrc
+xcelium> run
+xmsim: *W,RNQUIE: Simulation is complete.
+xcelium> exit
+TOOL:	xrun(64)	20.09-s009: Exiting on Apr 10, 2023 at 12:58:00 IST  (total: 00:00:01)

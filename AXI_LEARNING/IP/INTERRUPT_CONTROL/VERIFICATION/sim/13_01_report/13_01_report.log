@@ -1,0 +1,11 @@
+test_name : zic_rand_test     case : ALL     seed : 5178     status : FAIL
+test_name : zic_rand_test     case : ALL     seed : 62885     status : FAIL
+test_name : zic_rand_test     case : ALL     seed : 36105     status : FAIL
+test_name : zic_rand_test     case : ALL     seed : 51352     status : FAIL
+test_name : zic_rand_test     case : ALL     seed : 64073     status : FAIL
+test_name : zic_rand_test     case : ALL     seed : 9021     status : FAIL
+test_name : zic_test     case : ALL     seed : 65398     status : FAIL
+test_name : zic_test     case : ALL     seed : 55830     status : FAIL
+test_name : zic_test     case : ALL     seed : 18811     status : FAIL
+test_name : zic_test     case : ALL     seed : 46495     status : FAIL
+test_name : zic_test     case : ALL     seed : 51741     status : FAIL

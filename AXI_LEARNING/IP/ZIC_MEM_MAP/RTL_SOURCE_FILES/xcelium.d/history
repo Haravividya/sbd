@@ -1,0 +1,5 @@
+//
+// File created by:  xrun
+// Do not modify this file
+
+s1::(09Apr2023:23:40:23):( xrun -sv zic_mmr_ctrl.sv zic_mmr_op_mux.sv zic_mmr_reg_file.sv zic_mmr_top.sv )

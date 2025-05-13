@@ -1,0 +1,194 @@
+xrun(64): 20.09-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.09-s009: Started on Apr 09, 2023 at 23:40:22 IST
+xrun
+	-sv
+	zic_mmr_ctrl.sv
+	zic_mmr_op_mux.sv
+	zic_mmr_reg_file.sv
+	zic_mmr_top.sv
+file: zic_mmr_ctrl.sv
+	module worklib.zic_mmr_ctrl:sv
+		errors: 0, warnings: 0
+	module worklib.irq_ctrl:sv
+		errors: 0, warnings: 0
+file: zic_mmr_op_mux.sv
+	module worklib.zic_mmr_op_mux:sv
+		errors: 0, warnings: 0
+file: zic_mmr_reg_file.sv
+	module worklib.zic_mmr_reg_file:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_ack:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_cfg:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_info:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_eoi:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_nxtp:sv
+		errors: 0, warnings: 0
+	module worklib.wdt_mmr_csr:sv
+		errors: 0, warnings: 0
+	module worklib.WDT_REG_FILE:sv
+		errors: 0, warnings: 0
+	module worklib.WDT_COUNTER:sv
+		errors: 0, warnings: 0
+file: zic_mmr_top.sv
+	module worklib.zic_mmr_top:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		zic_mmr_top
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.zic_mmr_op_mux:sv <0x0ac75f50>
+			streams:   3, words: 10897
+		worklib.irq_ctrl:sv <0x58eb3a7d>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x3ec71284>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x005fcd04>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x1808f5a5>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x0315625c>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x65394aa5>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x5ba19525>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x51778ee9>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x3ddf5fc6>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x0ddb17c8>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x1b10b8e7>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x2b14f0e9>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x662107e7>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x56254fe9>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x5afb4c01>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x3cd764f8>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x51acae08>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x49fb96a9>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x77634929>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x114f61d0>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x0a52f629>
+			streams:   7, words:  2793
+		worklib.irq_ctrl:sv <0x4adcf4f0>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x226c4b87>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x12680389>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x00bbc2fe>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x30bf8af0>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x580f3587>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x680b7d89>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x78c10d6f>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x48c54561>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x5e0eea4e>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x6e0aa240>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x48c2e8da>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x78c6a0d4>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x7c8c2c96>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x1aa0046f>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x01bd9396>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x19eaab37>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x277274b7>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x415e5c4e>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x7bdeed96>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x799c79f0>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x112cc687>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x21288e89>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x126669df>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x226221d1>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x4ad29ea6>
+			streams:   7, words:  2796
+		worklib.irq_ctrl:sv <0x7ad6d6a8>
+			streams:   7, words:  2796
+		worklib.zic_mmr_ctrl:sv <0x77d77c5d>
+			streams:  49, words: 24188
+		worklib.zic_mmr_nxtp:sv <0x2a2e9ee4>
+			streams:   3, words:   728
+		worklib.zic_mmr_eoi:sv <0x7af178d3>
+			streams:   3, words:   728
+		worklib.zic_mmr_info:sv <0x2009f405>
+			streams:   1, words:   167
+		worklib.zic_mmr_cfg:sv <0x1e39800d>
+			streams:   1, words:   179
+		worklib.WDT_REG_FILE:sv <0x63b5effb>
+			streams:   8, words:  5298
+		worklib.WDT_COUNTER:sv <0x737e1f5f>
+			streams:  15, words:  4443
+		worklib.wdt_mmr_csr:sv <0x001e3a31>
+			streams:  18, words:  4457
+		worklib.zic_mmr_ack:sv <0x0c66034c>
+			streams:   3, words:   728
+		worklib.zic_mmr_reg_file:sv <0x11d074ce>
+			streams:  61, words: 22056
+		worklib.zic_mmr_top:sv <0x4de210e4>
+			streams: 167, words: 32043
+	Building instance specific data structures.
+    .debug_ndm_reset_i              (dbg_ndmrst_w               )
+                                                |
+xmelab: *W,CSINFI (./zic_mmr_top.sv,285|48): implicit wire has no fanin (zic_mmr_top.dbg_ndmrst_w).
+    .debug_mode_reset_i             (dbg_hart_only_rst_w        ),
+                                                       |
+xmelab: *W,CSINFI (./zic_mmr_top.sv,284|55): implicit wire has no fanin (zic_mmr_top.dbg_hart_only_rst_w).
+    .debug_mode_valid_i             (debug_mode_valid_w         ),
+                                                      |
+xmelab: *W,CSINFI (./zic_mmr_top.sv,283|54): implicit wire has no fanin (zic_mmr_top.debug_mode_valid_w).
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                60      13
+		Registers:             505     270
+		Scalar wires:           43       -
+		Vectored wires:        505       -
+		Always blocks:         204      16
+		Cont. assignments:     110      63
+		Pseudo assignments:    244     244
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.zic_mmr_top:sv
+Loading snapshot worklib.zic_mmr_top:sv .................... Done
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /tools/cadence_march2021/XCELIUM2009/tools/xcelium/files/xmsimrc
+xcelium> run
+xmsim: *W,RNQUIE: Simulation is complete.
+xcelium> exit
+TOOL:	xrun(64)	20.09-s009: Exiting on Apr 09, 2023 at 23:40:23 IST  (total: 00:00:01)

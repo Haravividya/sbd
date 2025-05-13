@@ -1,0 +1,103 @@
+xrun(64): 20.09-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.09-s009: Started on Jan 13, 2023 at 11:23:35 IST
+xrun
+	-access +rwc
+	-f ../UVME/zic_comp_file.f
+		../../RTL_SOURCE_FILES/zilla_interrupt_control.sv
+		../../RTL_SOURCE_FILES/zic_top.sv
+		../../RTL_SOURCE_FILES/interrupt_recieve.sv
+		../../RTL_SOURCE_FILES/priority_resolve.sv
+		../../RTL_SOURCE_FILES/zic_irg.sv
+		../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_top.sv
+		../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv
+		../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_ctrl.sv
+		../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_op_mux.sv
+		../UVME/ZIC_TOP/zic_interface.sv
+		../UVME/ZIC_PACKAGES/zic_package.sv
+		../UVME/ZIC_TOP/zic_test_top.sv
+	-svseed 65398
+	+UVM_TESTNAME=zic_test
+	+TEST_CASE=
+	+define+UVM_REPORT_DISABLE_FILE_LINE
+	-uvmhome CDNS-1.1d
+
+   User defined plus("+") options:
+	+TEST_CASE=
+
+Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /tools/cadence_march2021/XCELIUM2009/tools/methodology/UVM/CDNS-1.1d
+file: ../../RTL_SOURCE_FILES/zilla_interrupt_control.sv
+	module worklib.zilla_interrupt_control:sv
+		errors: 0, warnings: 0
+file: ../../RTL_SOURCE_FILES/zic_top.sv
+	module worklib.zic_top:sv
+		errors: 0, warnings: 0
+file: ../../RTL_SOURCE_FILES/interrupt_recieve.sv
+	module worklib.interrupt_recieve:sv
+		errors: 0, warnings: 0
+file: ../../RTL_SOURCE_FILES/priority_resolve.sv
+	module worklib.priority_resolve:sv
+		errors: 0, warnings: 0
+	module worklib.lvl_pr_compare:sv
+		errors: 0, warnings: 0
+file: ../../RTL_SOURCE_FILES/zic_irg.sv
+	module worklib.zic_irg:sv
+		errors: 0, warnings: 0
+file: ../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_top.sv
+	module worklib.zic_mmr_top:sv
+		errors: 0, warnings: 0
+file: ../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv
+	module worklib.zic_mmr_reg_file:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_ack:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_cfg:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_info:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_eoi:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_nxtp:sv
+		errors: 0, warnings: 0
+	module worklib.wdt_mmr_csr:sv
+		errors: 0, warnings: 0
+  output logic 		   loic wdt_enable		,//to enable the WDT counter to decrement its value bit 2
+               		      |
+xmvlog: *E,EXP1RD (../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,594|23): expecting at least one register variable [3.2.2(IEEE)].
+	module worklib.WDT_REG_FILE:sv
+		errors: 1, warnings: 0
+	module worklib.WDT_COUNTER:sv
+		errors: 0, warnings: 0
+file: ../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_ctrl.sv
+	module worklib.zic_mmr_ctrl:sv
+		errors: 0, warnings: 0
+	module worklib.irq_ctrl:sv
+		errors: 0, warnings: 0
+file: ../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_op_mux.sv
+	module worklib.zic_mmr_op_mux:sv
+		errors: 0, warnings: 0
+file: ../UVME/ZIC_TOP/zic_interface.sv
+	interface worklib.zic_intf:sv
+		errors: 0, warnings: 0
+file: ../UVME/ZIC_PACKAGES/zic_package.sv
+      $value$plusargs("TEST_CASE=%d",test_case);
+                    |
+xmvlog: *W,NOSYST (../UVME/ZIC_TESTS/zic_test.sv,24|20): System function '$value$plusargs' invoked as a task. Return value will be ignored.
+(`include file: ../UVME/ZIC_TESTS/zic_test.sv line 24, file: ../UVME/ZIC_PACKAGES/zic_package.sv line 19)
+    end
+      |
+xmvlog: *E,NOTSTT (../UVME/ZIC_TESTS/zic_test.sv,28|6): expecting a statement [9(IEEE)].
+(`include file: ../UVME/ZIC_TESTS/zic_test.sv line 28, file: ../UVME/ZIC_PACKAGES/zic_package.sv line 19)
+      $value$plusargs("TEST_CASE=%d",test_case);
+                    |
+xmvlog: *W,NOSYST (../UVME/ZIC_TESTS/zic_rand3_test.sv,22|20): System function '$value$plusargs' invoked as a task. Return value will be ignored.
+(`include file: ../UVME/ZIC_TESTS/zic_rand3_test.sv line 22, file: ../UVME/ZIC_PACKAGES/zic_package.sv line 23)
+	package worklib.zic_pkg:sv
+		errors: 1, warnings: 2
+file: ../UVME/ZIC_TOP/zic_test_top.sv
+  import zic_pkg::*;
+               |
+xmvlog: *E,NOPBIND (../UVME/ZIC_TOP/zic_test_top.sv,4|15): Package zic_pkg could not be bound.
+	module worklib.top:sv
+		errors: 1, warnings: 0
+xrun: *E,VLGERR: An error occurred during parsing.  Review the log file for errors with the code *E and fix those identified problems to proceed.  Exiting with code (status 1).
+TOOL:	xrun(64)	20.09-s009: Exiting on Jan 13, 2023 at 11:23:37 IST  (total: 00:00:02)

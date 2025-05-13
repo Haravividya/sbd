@@ -1,0 +1,6 @@
+//
+// File created by:  xrun
+// Do not modify this file
+
+s1::(09Apr2023:22:41:27):( xrun -sv csr_read_mux.sv csr_register_file.sv csr_top.sv )
+s2::(09Apr2023:22:41:34):( xrun -sv csr_read_mux.sv csr_register_file.sv csr_top.sv mhpm_counter_top.sv )

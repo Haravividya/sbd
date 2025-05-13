@@ -1,0 +1,9 @@
+./zic/zilla_interrupt_control.sv
+./zic/zic_top.sv
+./zic/interrupt_recieve.sv
+./zic/priority_resolve.sv
+./zic/zic_irg.sv
+./zic_mmr/zic_mmr_top.sv
+./zic_mmr/zic_mmr_reg_file.sv
+./zic_mmr/zic_mmr_ctrl.sv
+./zic_mmr/zic_mmr_op_mux.sv

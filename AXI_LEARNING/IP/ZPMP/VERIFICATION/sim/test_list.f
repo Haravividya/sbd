@@ -1,0 +1,14 @@
+pmp_write_addr_tb 50
+pmp_execption_test_tb 50
+pmp_random_test_tb 50
+pmp_reset_test_tb 50
+pmp_execption_test_tb 50
+pmp_write_read_access_tor 150
+pmp_write_read_access_na4 150
+pmp_write_read_access_napot 150
+pmp_write_read_access_all 150 
+
+pmp_napot 150
+pmp_na4 150
+pmp_tor 150
+

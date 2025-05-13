@@ -1,0 +1,60 @@
+xrun(64): 20.09-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.09-s009: Started on Apr 10, 2023 at 12:19:48 IST
+xrun
+	jtag_data_register.sv
+	jtag_instruction_register.sv
+	jtag_tap_controller.sv
+	jtag_tdo_mux.sv
+	jtag_top.sv
+file: jtag_data_register.sv
+	module worklib.jtag_data_register:sv
+		errors: 0, warnings: 0
+file: jtag_instruction_register.sv
+	module worklib.jtag_instruction_register:sv
+		errors: 0, warnings: 0
+file: jtag_tap_controller.sv
+	module worklib.jtag_tap_controller:sv
+		errors: 0, warnings: 0
+file: jtag_tdo_mux.sv
+	module worklib.jtag_tdo_mux:sv
+		errors: 0, warnings: 0
+file: jtag_top.sv
+	module worklib.jtag_top:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		jtag_top
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.jtag_tdo_mux:sv <0x41a5e4a7>
+			streams:   4, words:  1135
+		worklib.jtag_data_register:sv <0x04af5d7d>
+			streams:  26, words:  8799
+		worklib.jtag_instruction_register:sv <0x42a0fcbb>
+			streams:   6, words:  3056
+		worklib.jtag_tap_controller:sv <0x7c42b7b0>
+			streams:  31, words: 13775
+		worklib.jtag_top:sv <0x1cf379d7>
+			streams:  45, words: 10166
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 5       5
+		Registers:              93      93
+		Scalar wires:           86       -
+		Vectored wires:         17       -
+		Always blocks:          27      27
+		Cont. assignments:      22      25
+		Pseudo assignments:     45      45
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.jtag_top:sv
+Loading snapshot worklib.jtag_top:sv .................... Done
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /tools/cadence_march2021/XCELIUM2009/tools/xcelium/files/xmsimrc
+xcelium> run
+xmsim: *W,RNQUIE: Simulation is complete.
+xcelium> exit
+TOOL:	xrun(64)	20.09-s009: Exiting on Apr 10, 2023 at 12:19:49 IST  (total: 00:00:01)

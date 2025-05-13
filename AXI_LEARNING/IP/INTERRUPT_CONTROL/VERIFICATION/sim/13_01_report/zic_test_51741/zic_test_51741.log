@@ -1,0 +1,708 @@
+xrun(64): 20.09-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.09-s009: Started on Jan 13, 2023 at 12:53:03 IST
+xrun
+	-access +rwc
+	-f ../UVME/zic_comp_file.f
+		../../RTL_SOURCE_FILES/zilla_interrupt_control.sv
+		../../RTL_SOURCE_FILES/zic_top.sv
+		../../RTL_SOURCE_FILES/interrupt_recieve.sv
+		../../RTL_SOURCE_FILES/priority_resolve.sv
+		../../RTL_SOURCE_FILES/zic_irg.sv
+		../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_top.sv
+		../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv
+		../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_ctrl.sv
+		../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_op_mux.sv
+		../UVME/ZIC_TOP/zic_interface.sv
+		../UVME/ZIC_PACKAGES/zic_package.sv
+		../UVME/ZIC_TOP/zic_test_top.sv
+	-svseed 51741
+	+UVM_TESTNAME=zic_test
+	+TEST_CASE=
+	+define+UVM_REPORT_DISABLE_FILE_LINE
+	-uvmhome CDNS-1.1d
+
+   User defined plus("+") options:
+	+TEST_CASE=
+
+Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /tools/cadence_march2021/XCELIUM2009/tools/methodology/UVM/CDNS-1.1d
+file: ../../RTL_SOURCE_FILES/zilla_interrupt_control.sv
+	module worklib.zilla_interrupt_control:sv
+		errors: 0, warnings: 0
+file: ../../RTL_SOURCE_FILES/zic_top.sv
+	module worklib.zic_top:sv
+		errors: 0, warnings: 0
+file: ../../RTL_SOURCE_FILES/interrupt_recieve.sv
+	module worklib.interrupt_recieve:sv
+		errors: 0, warnings: 0
+file: ../../RTL_SOURCE_FILES/priority_resolve.sv
+	module worklib.priority_resolve:sv
+		errors: 0, warnings: 0
+	module worklib.lvl_pr_compare:sv
+		errors: 0, warnings: 0
+file: ../../RTL_SOURCE_FILES/zic_irg.sv
+	module worklib.zic_irg:sv
+		errors: 0, warnings: 0
+file: ../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_top.sv
+	module worklib.zic_mmr_top:sv
+		errors: 0, warnings: 0
+file: ../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv
+	module worklib.zic_mmr_reg_file:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_ack:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_cfg:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_info:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_eoi:sv
+		errors: 0, warnings: 0
+	module worklib.zic_mmr_nxtp:sv
+		errors: 0, warnings: 0
+	module worklib.wdt_mmr_csr:sv
+		errors: 0, warnings: 0
+	module worklib.WDT_REG_FILE:sv
+		errors: 0, warnings: 0
+	module worklib.WDT_COUNTER:sv
+		errors: 0, warnings: 0
+file: ../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_ctrl.sv
+	module worklib.zic_mmr_ctrl:sv
+		errors: 0, warnings: 0
+	module worklib.irq_ctrl:sv
+		errors: 0, warnings: 0
+file: ../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_op_mux.sv
+	module worklib.zic_mmr_op_mux:sv
+		errors: 0, warnings: 0
+file: ../UVME/ZIC_TOP/zic_interface.sv
+	interface worklib.zic_intf:sv
+		errors: 0, warnings: 0
+file: ../UVME/ZIC_PACKAGES/zic_package.sv
+      $value$plusargs("TEST_CASE=%d",test_case);
+                    |
+xmvlog: *W,NOSYST (../UVME/ZIC_TESTS/zic_test.sv,24|20): System function '$value$plusargs' invoked as a task. Return value will be ignored.
+(`include file: ../UVME/ZIC_TESTS/zic_test.sv line 24, file: ../UVME/ZIC_PACKAGES/zic_package.sv line 19)
+      $value$plusargs("TEST_CASE=%d",test_case);
+                    |
+xmvlog: *W,NOSYST (../UVME/ZIC_TESTS/zic_rand3_test.sv,22|20): System function '$value$plusargs' invoked as a task. Return value will be ignored.
+(`include file: ../UVME/ZIC_TESTS/zic_rand3_test.sv line 22, file: ../UVME/ZIC_PACKAGES/zic_package.sv line 23)
+	package worklib.zic_pkg:sv
+		errors: 0, warnings: 2
+file: ../UVME/ZIC_TOP/zic_test_top.sv
+	module worklib.top:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+  zilla_interrupt_control DUT(.zic_clk(vif.clk),				
+                            |
+xmelab: *W,CUVWSP (../UVME/ZIC_TOP/zic_test_top.sv,10|28): 1 output port was not connected:
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/INTERRUPT_CONTROL/RTL_SOURCE_FILES/zilla_interrupt_control.sv,72): wdt_reset_o
+
+  zilla_interrupt_control DUT(.zic_clk(vif.clk),				
+                            |
+xmelab: *W,CUVWSI (../UVME/ZIC_TOP/zic_test_top.sv,10|28): 3 input ports were not connected:
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/INTERRUPT_CONTROL/RTL_SOURCE_FILES/zilla_interrupt_control.sv,69): debug_mode_valid_i
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/INTERRUPT_CONTROL/RTL_SOURCE_FILES/zilla_interrupt_control.sv,70): debug_mode_reset_i
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/INTERRUPT_CONTROL/RTL_SOURCE_FILES/zilla_interrupt_control.sv,71): debug_ndm_reset_i
+
+WDT_REG_FILE wdt_reg_file_inst
+                             |
+xmelab: *W,CUVWSP (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,553|29): 8 output ports were not connected:
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,594): wdt_enable
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,595): debug_enable
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,596): wait_enable
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,597): stop_enable
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,598): wdt_ctrl_o
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,600): wdt_interrupt
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,602): reload_count
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,603): wdt_event
+
+WDT_REG_FILE wdt_reg_file_inst
+                             |
+xmelab: *W,CUVWSI (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,553|29): 2 input ports were not connected:
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,591): wdt_write_en_i
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,599): clear_event
+
+	Top level design units:
+		uvm_pkg
+		cdns_uvmapi
+		cdns_assert2uvm_pkg
+		cdns_uvm_pkg
+		zic_pkg
+		top
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+WDT_COUNTER wdt_counter_inst
+                           |
+xmelab: *W,CUVDSI (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,524|27): 2 input ports were not connected by dot-star:
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,712): reload_count
+xmelab: (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv,720): wdt_enable
+
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.zic_irg:sv <0x14783829>
+			streams:   8, words:  2526
+		worklib.lvl_pr_compare:sv <0x7de9d9a0>
+			streams:   1, words:  1709
+		worklib.priority_resolve:sv <0x5bbecfcd>
+			streams: 333, words: 81159
+		worklib.interrupt_recieve:sv <0x3cf4a313>
+			streams:  52, words: 21289
+		worklib.zic_mmr_op_mux:sv <0x27d2bb30>
+			streams:   3, words: 11000
+		worklib.irq_ctrl:sv <0x2a848bb8>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x4ca8a341>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x72307cc1>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x6a674460>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x717ad399>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x1756fb60>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x29ce24e0>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x23183f2c>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x4fb0ee03>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x7fb4a60d>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x697f0922>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x597b412c>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x144eb622>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x244afe2c>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x2894fdc4>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x4eb8d53d>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x23c31fcd>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x3b94276c>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x050cf8ec>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x6320d015>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x783d47ec>
+			streams:   7, words:  2935
+		worklib.irq_ctrl:sv <0x38b34535>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x5003fa42>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x6007b24c>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x72d4733b>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x42d03b35>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x2a608442>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x1a64cc4c>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x0aaebcaa>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x3aaaf4a4>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x2c615b8b>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x1c651385>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x3aad591f>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x0aa91111>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x0ee39d53>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x68cfb5aa>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x73d22253>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x6b851af2>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x551dc572>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x3331ed8b>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x09b15c53>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x0bf3c835>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x63437742>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x53473f4c>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x6009d81a>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x500d9014>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x38bd2f63>
+			streams:   7, words:  2938
+		worklib.irq_ctrl:sv <0x08b9676d>
+			streams:   7, words:  2938
+		worklib.zic_mmr_ctrl:sv <0x4beed4e3>
+			streams:  49, words: 25564
+		worklib.zic_mmr_nxtp:sv <0x0f4f8ed3>
+			streams:   3, words:   801
+		worklib.zic_mmr_eoi:sv <0x5f9068e4>
+			streams:   3, words:   801
+		worklib.zic_mmr_info:sv <0x23a714de>
+			streams:   1, words:   193
+		worklib.zic_mmr_cfg:sv <0x0c29750f>
+			streams:   1, words:   205
+		worklib.WDT_REG_FILE:sv <0x126ea262>
+			streams:   8, words:  4861
+		worklib.WDT_COUNTER:sv <0x1a7126f3>
+			streams:  15, words:  4752
+		worklib.wdt_mmr_csr:sv <0x67f5e080>
+			streams:  11, words:  2640
+		worklib.zic_mmr_ack:sv <0x18f865b3>
+			streams:   3, words:   801
+		worklib.zic_mmr_top:sv <0x2aac2bf4>
+			streams: 167, words: 41300
+		worklib.zilla_interrupt_control:sv <0x61391db8>
+			streams: 123, words: 28782
+		worklib.uvm_pkg:sv <0x06466e7a>
+			streams:   6, words:  3460
+		worklib.uvm_pkg:sv <0x61781a36>
+			streams:   6, words:  3120
+		worklib.uvm_pkg:sv <0x6aa17f99>
+			streams:   5, words:  2530
+		worklib.uvm_pkg:sv <0x5d852980>
+			streams:   7, words:  1927
+		worklib.uvm_pkg:sv <0x214e58fe>
+			streams:   8, words:  2774
+		worklib.uvm_pkg:sv <0x5f287de2>
+			streams:  21, words: 50384
+		worklib.uvm_pkg:sv <0x1ee21572>
+			streams:   7, words:  1927
+		worklib.uvm_pkg:sv <0x004d91a7>
+			streams:  24, words: 20005
+		worklib.uvm_pkg:sv <0x0b14d184>
+			streams:  24, words: 19057
+		worklib.uvm_pkg:sv <0x043fa777>
+			streams:  20, words: 18422
+		worklib.uvm_pkg:sv <0x3a422268>
+			streams:  11, words:  4487
+		worklib.uvm_pkg:sv <0x304e7d8e>
+			streams:  23, words: 28439
+		worklib.uvm_pkg:sv <0x5714a793>
+			streams:   7, words:  2431
+		worklib.uvm_pkg:sv <0x61d95712>
+			streams:  12, words: 15704
+		worklib.uvm_pkg:sv <0x4c769e17>
+			streams:  23, words: 24052
+		worklib.uvm_pkg:sv <0x071eb590>
+			streams:  22, words: 50198
+		worklib.uvm_pkg:sv <0x0613fe84>
+			streams:  25, words: 32122
+		worklib.uvm_pkg:sv <0x73815cbe>
+			streams:  24, words: 45773
+		worklib.uvm_pkg:sv <0x530052b4>
+			streams:  25, words: 34760
+		worklib.uvm_pkg:sv <0x5747869a>
+			streams:  23, words: 50879
+		worklib.uvm_pkg:sv <0x73eb6f49>
+			streams:  25, words: 36831
+		worklib.uvm_pkg:sv <0x0cc2348e>
+			streams:  23, words: 56185
+		worklib.uvm_pkg:sv <0x20ccef4a>
+			streams:  25, words: 41609
+		worklib.uvm_pkg:sv <0x592486b1>
+			streams:  23, words: 49593
+		worklib.uvm_pkg:sv <0x0aa007ff>
+			streams:  23, words: 52550
+		worklib.uvm_pkg:sv <0x021ef414>
+			streams:  25, words: 34189
+		worklib.uvm_pkg:sv <0x10c88674>
+			streams:  23, words: 49208
+		worklib.uvm_pkg:sv <0x6a841b2d>
+			streams:  25, words: 76164
+		worklib.uvm_pkg:sv <0x0f13dfdd>
+			streams:  53, words: 71909
+		worklib.cdns_uvm_pkg:sv <0x67db442b>
+			streams:  26, words: 34197
+		worklib.cdns_uvm_pkg:sv <0x72c8331c>
+			streams:   8, words:  4031
+		worklib.cdns_uvm_pkg:sv <0x3d4ea55f>
+			streams:  10, words:  8705
+		worklib.uvm_pkg:sv <0x44129e93>
+			streams:  21, words: 20114
+		worklib.uvm_pkg:sv <0x09963823>
+			streams:  21, words: 19722
+		worklib.uvm_pkg:sv <0x71ff2d2d>
+			streams:  23, words: 282701
+		worklib.uvm_pkg:sv <0x4348a9da>
+			streams:  21, words: 19722
+		worklib.uvm_pkg:sv <0x34803083>
+			streams:  23, words: 36431
+		worklib.uvm_pkg:sv <0x143363b0>
+			streams:  21, words: 19722
+		worklib.uvm_pkg:sv <0x013d859c>
+			streams:  23, words: 540823
+		worklib.uvm_pkg:sv <0x4a9e6227>
+			streams:  21, words: 20144
+		worklib.uvm_pkg:sv <0x2c4f2c07>
+			streams:  23, words: 1285516
+		worklib.uvm_pkg:sv <0x070b5229>
+			streams:  21, words: 19722
+		worklib.uvm_pkg:sv <0x316c708e>
+			streams:  23, words: 68135
+		worklib.uvm_pkg:sv <0x26e73238>
+			streams:  21, words: 19722
+		worklib.uvm_pkg:sv <0x10fa5a0f>
+			streams:   7, words:  3099
+		worklib.uvm_pkg:sv <0x5f3a7aa0>
+			streams:  22, words: 19247
+		worklib.uvm_pkg:sv <0x2147f6c3>
+			streams:  22, words: 20500
+		worklib.uvm_pkg:sv <0x3bf5710c>
+			streams:   8, words:  4212
+		worklib.uvm_pkg:sv <0x63593005>
+			streams:  44, words: 80570
+		worklib.uvm_pkg:sv <0x51ec5dc4>
+			streams:  22, words: 49688
+		worklib.uvm_pkg:sv <0x28ab7ae5>
+			streams:   7, words:  3099
+		worklib.uvm_pkg:sv <0x73e37c9e>
+			streams: 111, words: 138975
+		worklib.uvm_pkg:sv <0x6775ef0f>
+			streams:  39, words: 196388
+		worklib.uvm_pkg:sv <0x0c7758a0>
+			streams:   7, words:  3099
+		worklib.uvm_pkg:sv <0x19424ed8>
+			streams:  23, words: 117212
+		worklib.uvm_pkg:sv <0x0d3fe0dc>
+			streams: 177, words: 742451
+		worklib.uvm_pkg:sv <0x61d4bf94>
+			streams:  23, words: 276783
+		worklib.top:sv <0x6d23b9b1>
+			streams: 123, words: 92829
+		worklib.zic_pkg:sv <0x19e1ef72>
+			streams:   0, words:     0
+		worklib.cdns_uvm_pkg:sv <0x0a1ece48>
+			streams: 128, words: 239767
+		worklib.cdns_uvmapi:svp <0x799cc8a1>
+			streams:  27, words: 31790
+		worklib.cdns_assert2uvm_pkg:sv <0x1ef15c54>
+			streams:   3, words:  2239
+		worklib.uvm_pkg:sv <0x019bff40>
+			streams: 3937, words: 6437344
+		worklib.zic_mmr_reg_file:sv <0x546a8fd6>
+			streams:  61, words: 24088
+		worklib.zic_top:sv <0x2e8b621b>
+			streams:  15, words:  4448
+	Building instance specific data structures.
+.debug_ndm_reset_i              (dbg_ndmrst_i               )
+                                            |
+xmelab: *W,CSINFI (/home/sgeuser56/Documents/RTL_Training/SV/IP/INTERRUPT_CONTROL/RTL_SOURCE_FILES/zilla_interrupt_control.sv,222|44): implicit wire has no fanin (top.DUT.dbg_ndmrst_i).
+.debug_mode_reset_i             (dbg_hart_only_rst_i        ),
+                                                   |
+xmelab: *W,CSINFI (/home/sgeuser56/Documents/RTL_Training/SV/IP/INTERRUPT_CONTROL/RTL_SOURCE_FILES/zilla_interrupt_control.sv,221|51): implicit wire has no fanin (top.DUT.dbg_hart_only_rst_i).
+.debug_ndm_reset_i              (dbg_ndmrst_w               )
+                                            |
+xmelab: *W,CSINFI (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_top.sv,297|44): implicit wire has no fanin (top.DUT.zic_mmr_top_inst.dbg_ndmrst_w).
+.debug_mode_reset_i             (dbg_hart_only_rst_w        ),
+                                                   |
+xmelab: *W,CSINFI (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_top.sv,296|51): implicit wire has no fanin (top.DUT.zic_mmr_top_inst.dbg_hart_only_rst_w).
+.debug_mode_valid_i             (debug_mode_valid_w         ),
+                                                  |
+xmelab: *W,CSINFI (/home/sgeuser56/Documents/RTL_Training/SV/IP/ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_top.sv,295|50): implicit wire has no fanin (top.DUT.zic_mmr_top_inst.debug_mode_valid_w).
+.debug_ndm_reset_i              (dbg_ndmrst_i                       )
+                                            |
+xmelab: *W,CSINFI (/home/sgeuser56/Documents/RTL_Training/SV/IP/INTERRUPT_CONTROL/RTL_SOURCE_FILES/zic_top.sv,287|44): implicit wire has no fanin (top.DUT.zic_top_inst.dbg_ndmrst_i).
+.debug_mode_reset_i             (dbg_hart_only_rst_i               ),
+                                                   |
+xmelab: *W,CSINFI (/home/sgeuser56/Documents/RTL_Training/SV/IP/INTERRUPT_CONTROL/RTL_SOURCE_FILES/zic_top.sv,286|51): implicit wire has no fanin (top.DUT.zic_top_inst.dbg_hart_only_rst_i).
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                       Instances  Unique
+		Modules:                     113      20
+		Interfaces:                    1       1
+		Verilog packages:              5       5
+		Registers:                 16416   12123
+		Scalar wires:                186       -
+		Expanded wires:               96       2
+		Vectored wires:             1108       -
+		Named events:                  4      12
+		Always blocks:               256      22
+		Initial blocks:              319     167
+		Parallel blocks:              26      27
+		Cont. assignments:           216     169
+		Pseudo assignments:          718     718
+		Assertions:                    2       2
+		SV Class declarations:       210     324
+		SV Class specializations:    405     405
+		Simulation timescale:        1ps
+	Writing initial simulation snapshot: worklib.top:sv
+Loading snapshot worklib.top:sv .................... Done
+SVSEED set from command line: 51741
+xmsim: *W,RNDXCELON: A newer version of the SystemVerilog constraint solver is being used which has better support for array-solving, new solve-order mechanism, and seed stability enhancements..
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /tools/cadence_march2021/XCELIUM2009/tools/xcelium/files/xmsimrc
+xcelium> source /tools/cadence_march2021/XCELIUM2009/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+----------------------------------------------------------------
+CDNS-UVM-1.1d (20.09-s009)
+(C) 2007-2013 Mentor Graphics Corporation
+(C) 2007-2013 Cadence Design Systems, Inc.
+(C) 2006-2013 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test zic_test...
+UVM_INFO @ 20000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 20000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 3, Address : 1003 
+
+UVM_INFO @ 30000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 30000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 3, Address : 1003 
+
+UVM_INFO @ 40000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 40000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 147, Address : 1007 
+
+UVM_INFO @ 50000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 50000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 147, Address : 100b 
+
+UVM_INFO @ 60000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 60000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 183, Address : 100f 
+
+UVM_INFO @ 70000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 70000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 7, Address : 1013 
+
+UVM_INFO @ 80000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 80000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 11, Address : 1017 
+
+UVM_INFO @ 90000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 90000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 15, Address : 101b 
+
+UVM_INFO @ 100000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 100000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 19, Address : 101f 
+
+UVM_INFO @ 110000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 110000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 23, Address : 1023 
+
+UVM_INFO @ 120000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 120000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 27, Address : 1027 
+
+UVM_INFO @ 130000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 130000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 31, Address : 102b 
+
+UVM_INFO @ 140000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 140000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 159, Address : 102f 
+
+UVM_INFO @ 150000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 150000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 63, Address : 1033 
+
+UVM_INFO @ 160000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 160000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 95, Address : 1037 
+
+UVM_INFO @ 170000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 170000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 127, Address : 103b 
+
+UVM_INFO @ 180000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 180000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 191, Address : 103f 
+
+UVM_INFO @ 190000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 190000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 223, Address : 1043 
+
+UVM_INFO @ 200000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 200000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 255, Address : 1047 
+
+UVM_INFO @ 210000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 210000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 35, Address : 104b 
+
+UVM_INFO @ 220000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 220000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 39, Address : 104f 
+
+UVM_INFO @ 230000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 230000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 43, Address : 1053 
+
+UVM_INFO @ 240000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 240000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 47, Address : 1057 
+
+UVM_INFO @ 250000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 250000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 51, Address : 105b 
+
+UVM_INFO @ 260000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 260000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 55, Address : 105f 
+
+UVM_INFO @ 270000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 270000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 59, Address : 1063 
+
+UVM_INFO @ 280000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 280000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 63, Address : 1067 
+
+UVM_INFO @ 290000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 290000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 75, Address : 106b 
+
+UVM_INFO @ 300000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 300000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 107, Address : 106f 
+
+UVM_INFO @ 310000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 310000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 139, Address : 1073 
+
+UVM_INFO @ 320000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 320000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 171, Address : 1077 
+
+UVM_INFO @ 330000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 330000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 203, Address : 107b 
+
+UVM_INFO @ 340000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 340000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 235, Address : 107f 
+
+UVM_INFO @ 350000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 350000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 99, Address : 1083 
+
+UVM_INFO @ 360000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 360000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 103, Address : 1087 
+
+UVM_INFO @ 370000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 370000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 107, Address : 108b 
+
+UVM_INFO @ 380000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 380000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 111, Address : 108f 
+
+UVM_INFO @ 390000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 390000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 115, Address : 1093 
+
+UVM_INFO @ 400000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 400000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 119, Address : 1097 
+
+UVM_INFO @ 410000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 410000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 123, Address : 109b 
+
+UVM_INFO @ 420000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 420000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 127, Address : 109f 
+
+UVM_INFO @ 430000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 430000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 195, Address : 10a3 
+
+UVM_INFO @ 440000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 440000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 207, Address : 10a7 
+
+UVM_INFO @ 450000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 450000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 211, Address : 10ab 
+
+UVM_INFO @ 460000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 460000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 215, Address : 10af 
+
+UVM_INFO @ 470000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 470000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 219, Address : 10b3 
+
+UVM_INFO @ 480000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 480000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 223, Address : 10b7 
+
+UVM_INFO @ 490000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 490000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 159, Address : 10bb 
+
+UVM_ERROR @ 490000: uvm_test_top.zic_env.zic_agn.zic_seqcr@@zic_seq [CASE] Incorrect case selected
+UVM_INFO @ 500000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 500000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 155, Address : 10bf 
+
+UVM_INFO @ 510000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 510000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 155, Address : 10bf 
+
+UVM_INFO @ 520000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 520000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 155, Address : 10bf 
+
+UVM_INFO @ 530000: uvm_test_top.zic_env.zic_scb [ Level and Priority] Configuring level and priority  
+UVM_INFO @ 530000: uvm_test_top.zic_env.zic_scb [Level and Priority] Value : 155, Address : 10bf 
+
+UVM_INFO @ 535000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+conig_mem size = 48
+enable_mem size = 0
+**********Configured values**********
+	config_mem[1003] 	 = 3
+	config_mem[1007] 	 = 147
+	config_mem[100b] 	 = 147
+	config_mem[100f] 	 = 183
+	config_mem[1013] 	 = 7
+	config_mem[1017] 	 = 11
+	config_mem[101b] 	 = 15
+	config_mem[101f] 	 = 19
+	config_mem[1023] 	 = 23
+	config_mem[1027] 	 = 27
+	config_mem[102b] 	 = 31
+	config_mem[102f] 	 = 159
+	config_mem[1033] 	 = 63
+	config_mem[1037] 	 = 95
+	config_mem[103b] 	 = 127
+	config_mem[103f] 	 = 191
+	config_mem[1043] 	 = 223
+	config_mem[1047] 	 = 255
+	config_mem[104b] 	 = 35
+	config_mem[104f] 	 = 39
+	config_mem[1053] 	 = 43
+	config_mem[1057] 	 = 47
+	config_mem[105b] 	 = 51
+	config_mem[105f] 	 = 55
+	config_mem[1063] 	 = 59
+	config_mem[1067] 	 = 63
+	config_mem[106b] 	 = 75
+	config_mem[106f] 	 = 107
+	config_mem[1073] 	 = 139
+	config_mem[1077] 	 = 171
+	config_mem[107b] 	 = 203
+	config_mem[107f] 	 = 235
+	config_mem[1083] 	 = 99
+	config_mem[1087] 	 = 103
+	config_mem[108b] 	 = 107
+	config_mem[108f] 	 = 111
+	config_mem[1093] 	 = 115
+	config_mem[1097] 	 = 119
+	config_mem[109b] 	 = 123
+	config_mem[109f] 	 = 127
+	config_mem[10a3] 	 = 195
+	config_mem[10a7] 	 = 207
+	config_mem[10ab] 	 = 211
+	config_mem[10af] 	 = 215
+	config_mem[10b3] 	 = 219
+	config_mem[10b7] 	 = 223
+	config_mem[10bb] 	 = 159
+	config_mem[10bf] 	 = 155
+**********Enabled interrupts**********
+Highest level priority = x location = 0
+Interrupt ID = 0
+
+--- UVM Report catcher Summary ---
+
+
+Number of demoted UVM_FATAL reports  :    0
+Number of demoted UVM_ERROR reports  :    0
+Number of demoted UVM_WARNING reports:    0
+Number of caught UVM_FATAL reports   :    0
+Number of caught UVM_ERROR reports   :    0
+Number of caught UVM_WARNING reports :    0
+
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :  106
+UVM_WARNING :    0
+UVM_ERROR :    1
+UVM_FATAL :    0
+** Report counts by id
+[ Level and Priority]    52
+[CASE]     1
+[Level and Priority]    52
+[RNTST]     1
+[TEST_DONE]     1
+Simulation complete via $finish(1) at time 535 NS + 45
+/tools/cadence_march2021/XCELIUM2009/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_root.svh:457     $finish;
+xcelium> exit
+TOOL:	xrun(64)	20.09-s009: Exiting on Jan 13, 2023 at 12:53:15 IST  (total: 00:00:12)

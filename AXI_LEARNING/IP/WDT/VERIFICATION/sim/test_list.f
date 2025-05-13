@@ -1,0 +1,9 @@
+wdt_test              500 
+wdt_word_test         500
+wdt_wait_test         500
+wdt_stop_test         500
+wdt_debug_test        500
+wdt_modes_test        500
+wdt_interrupt16_test  500
+wdt_interrupt32_test  500
+wdt_interrupt64_test  500

@@ -1,0 +1,31 @@
+package wdt_pkg;
+
+  import uvm_pkg::*;
+  `include "uvm_macros.svh"
+  `include "../UVME/WDT_SEQUENCES/wdt_seq_item.sv"
+  `include "../UVME/WDT_SEQUENCES/wdt_sequence.sv"
+  `include "../UVME/WDT_SEQUENCES/wdt_word_seq.sv"
+  `include "../UVME/WDT_SEQUENCES/wdt_wait_seq.sv"
+  `include "../UVME/WDT_SEQUENCES/wdt_stop_seq.sv"
+  `include "../UVME/WDT_SEQUENCES/wdt_debug_seq.sv"
+  `include "../UVME/WDT_SEQUENCES/wdt_modes_seq.sv"
+  `include "../UVME/WDT_SEQUENCES/wdt_interrupt16_seq.sv"
+  `include "../UVME/WDT_SEQUENCES/wdt_interrupt32_seq.sv"
+  `include "../UVME/WDT_SEQUENCES/wdt_interrupt64_seq.sv"
+  `include "../UVME/WDT_SEQUENCES/wdt_sequencer.sv"
+  `include "../UVME/WDT_AGENT/wdt_driver.sv"
+  `include "../UVME/WDT_AGENT/wdt_monitor.sv"
+  `include "../UVME/WDT_AGENT/wdt_agent.sv"
+  `include "../UVME/WDT_ENVIRONMENT/wdt_scb.sv"
+  `include "../UVME/WDT_ENVIRONMENT/wdt_env.sv"
+  `include "../UVME/WDT_TESTS/wdt_test.sv"
+  `include "../UVME/WDT_TESTS/wdt_word_test.sv"
+  `include "../UVME/WDT_TESTS/wdt_wait_test.sv"
+  `include "../UVME/WDT_TESTS/wdt_stop_test.sv"
+  `include "../UVME/WDT_TESTS/wdt_debug_test.sv"
+  `include "../UVME/WDT_TESTS/wdt_interrupt16_test.sv"
+  `include "../UVME/WDT_TESTS/wdt_interrupt32_test.sv"
+  `include "../UVME/WDT_TESTS/wdt_interrupt64_test.sv"
+  `include "../UVME/WDT_TESTS/wdt_modes_test.sv"
+
+endpackage

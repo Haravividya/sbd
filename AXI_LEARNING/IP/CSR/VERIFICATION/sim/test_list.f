@@ -1,0 +1,9 @@
+csr_test 1000
+csr_test_hpmc 1000
+csr_test_mcycle_minstret 1000
+csr_rand_test 1000
+csr_clear_uncovered_test 1000
+csr_set_uncovered_test 1000
+csr_hpmc_uncovered_test 1000
+
+

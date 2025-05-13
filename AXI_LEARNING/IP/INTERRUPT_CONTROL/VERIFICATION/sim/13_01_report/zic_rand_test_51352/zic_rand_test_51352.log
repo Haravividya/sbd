@@ -1,0 +1,30 @@
+xrun(64): 20.09-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.09-s009: Started on Jan 13, 2023 at 11:18:11 IST
+xrun
+	-access +rwc
+	-f ../UVME/zic_comp_file.f
+		../../RTL_SOURCE_FILES/zilla_interrupt_control.sv
+		../../RTL_SOURCE_FILES/zic_top.sv
+		../../RTL_SOURCE_FILES/interrupt_recieve.sv
+		../../RTL_SOURCE_FILES/priority_resolve.sv
+		../../RTL_SOURCE_FILES/zic_irg.sv
+		../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_top.sv
+		../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_reg_file.sv
+		../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_ctrl.sv
+		../../../ZIC_MEM_MAP/RTL_SOURCE_FILES/zic_mmr_op_mux.sv
+		../UVME/ZIC_TOP/zic_interface.v
+		../UVME/ZIC_PACKAGES/zic_package.V
+		../UVME/ZIC_TOP/zic_test_top.v
+	-svseed 51352
+	+UVM_TESTNAME=zic_rand_test
+	+TEST_CASE=
+	+define+UVM_REPORT_DISABLE_FILE_LINE
+	-uvmhome CDNS-1.1d
+
+   User defined plus("+") options:
+	+TEST_CASE=
+
+xrun: *E,FILEMIS: Cannot find the provided file ../UVME/ZIC_TOP/zic_interface.v.
+xrun: *E,FILEMIS: Cannot find the provided file ../UVME/ZIC_PACKAGES/zic_package.V.
+xrun: *E,FILEMIS: Cannot find the provided file ../UVME/ZIC_TOP/zic_test_top.v.
+TOOL:	xrun(64)	20.09-s009: Exiting on Jan 13, 2023 at 11:18:11 IST  (total: 00:00:00)

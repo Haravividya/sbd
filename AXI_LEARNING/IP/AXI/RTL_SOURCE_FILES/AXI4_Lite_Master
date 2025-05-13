@@ -1,0 +1,4 @@
+// This is the AXI4 Lite Master Controller Source code
+// It can work for 32 bit address and data, 4 bit strobe
+// and also 64 bit address and data, 8 bit strobe
+// define macro is there in RTL use this for 64 bit and disable it for 32 bit

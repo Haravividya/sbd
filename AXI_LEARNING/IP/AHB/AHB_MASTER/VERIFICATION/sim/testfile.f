@@ -1,0 +1,9 @@
+ahb_master_reset_test 50
+ahb_master_addr_test 50
+ahb_master_read_test 50
+ahb_master_write_test 50
+ahb_master_burst_test 50
+ahb_master_hready_test 50
+ahb_master_hresp_test 50
+ahb_master_hgrant_test 50
+ahb_master_busreq_test 50

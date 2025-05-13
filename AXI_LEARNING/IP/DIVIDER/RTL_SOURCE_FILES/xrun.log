@@ -1,0 +1,64 @@
+xrun(64): 20.09-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.09-s009: Started on Apr 10, 2023 at 13:38:26 IST
+xrun
+	-sv
+	zilla_divider.sv
+	zilla_reminder.sv
+	riscv_divider_32bit.sv
+	riscv_divider_64bit.sv
+	riscv_divider.sv
+file: zilla_divider.sv
+	module worklib.zilla_divider:sv
+		errors: 0, warnings: 0
+file: zilla_reminder.sv
+	module worklib.zilla_reminder:sv
+		errors: 0, warnings: 0
+file: riscv_divider_32bit.sv
+	module worklib.riscv_divider_32bit:sv
+		errors: 0, warnings: 0
+file: riscv_divider_64bit.sv
+	module worklib.riscv_divider_64bit:sv
+		errors: 0, warnings: 0
+file: riscv_divider.sv
+	module worklib.riscv_divider:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		zilla_divider
+		zilla_reminder
+		riscv_divider_64bit
+		riscv_divider
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.riscv_divider:sv <0x553a3c74>
+			streams:   0, words:     0
+		worklib.riscv_divider_64bit:sv <0x4adaf672>
+			streams:   0, words:     0
+		worklib.zilla_reminder:sv <0x27dfd785>
+			streams:  11, words:  2866
+		worklib.riscv_divider_32bit:sv <0x59d1ebff>
+			streams:  21, words:  7428
+		worklib.zilla_divider:sv <0x136abcac>
+			streams:  11, words:  2613
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 6       5
+		Registers:              88      69
+		Scalar wires:           38       -
+		Vectored wires:         18       -
+		Always blocks:          23      18
+		Cont. assignments:      15      26
+		Pseudo assignments:      9       9
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.zilla_divider:sv
+Loading snapshot worklib.zilla_divider:sv .................... Done
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /tools/cadence_march2021/XCELIUM2009/tools/xcelium/files/xmsimrc
+xcelium> run
+xmsim: *W,RNQUIE: Simulation is complete.
+xcelium> exit
+TOOL:	xrun(64)	20.09-s009: Exiting on Apr 10, 2023 at 13:38:26 IST  (total: 00:00:00)

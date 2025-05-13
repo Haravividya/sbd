@@ -1,0 +1,35 @@
+xrun(64): 20.09-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.09-s009: Started on Mar 30, 2023 at 16:37:59 IST
+xrun
+	axi_master.sv
+file: axi_master.sv
+	module worklib.axi_master:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		axi_master
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.axi_master:sv <0x6aff0b81>
+			streams:  15, words:  6421
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 1       1
+		Registers:              39      39
+		Scalar wires:            8       -
+		Vectored wires:         16       -
+		Always blocks:          16      16
+		Cont. assignments:       4      18
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.axi_master:sv
+Loading snapshot worklib.axi_master:sv .................... Done
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /tools/cadence_march2021/XCELIUM2009/tools/xcelium/files/xmsimrc
+xcelium> run
+xmsim: *W,RNQUIE: Simulation is complete.
+xcelium> exit
+TOOL:	xrun(64)	20.09-s009: Exiting on Mar 30, 2023 at 16:38:00 IST  (total: 00:00:01)

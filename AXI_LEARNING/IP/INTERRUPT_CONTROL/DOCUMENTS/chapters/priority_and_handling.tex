@@ -1,0 +1,190 @@
+\chapter{Interrupt prioritization and handling overview}
+
+Interrupt Handling and Prioritization Overview
+This chapter describes the interrupt handling and prioritization in the ZIC. It contains the following sections:
+
+\begin{itemize}
+    \item \hyperref[sec:about-interrupt-priority-handling]{About interrupt prioritization and handling}
+    \item \hyperref[sec:interrupt-levels-priorities]{Interrupt Levels and Priorities}
+    \item \hyperref[sec:general-interrupt-handling]{General Interrupt Handling}
+    \item \hyperref[sec:control-flow]{Control Flow}
+    \item \hyperref[sec:isr]{Interrupt Service Routine}
+    \item \hyperref[sec:interrupt-exit-flow]{Interrupt Exit Flow}
+\end{itemize}
+\newpage
+
+\section{About interrupt prioritization and handling}
+\label{sec:about-interrupt-priority-handling}
+
+\section{Interrupt Levels and Priorities}
+\label{sec:interrupt-levels-priorities}
+
+Each supported interrupt has an interrupt ID and a programmable level priority value. Interrupt levels are used to determine preemption (for nesting interrupts). In contrast, Interrupt priorities do not affect preemption but are only used as a tie-breaker when there are multiple pending interrupts with the same interrupt level.
+
+\subsection{Specifying Interrupt Level}
+
+The 4-bit \texttt{zic\_cfg.nlbits} WARL field indicates how many upper bits in \linebreak \texttt{zic\_int\_ctl[i]} are assigned to encode the interrupt level. Valid values are 0-8.
+
+Although the interrupt level is an 8-bit unsigned integer, the number of bits assigned or implemented can be fewer than 8. As described above, the number of bits assigned is specified in \texttt{cliccfg.nlbits}. The number of bits implemented can be derived from \texttt{zic\_cfg.nlbits} and a fixed parameter 
+\linebreak \texttt{zic\_info.zic\_int\_ctl\_bits} (with a value between 0 to 8) which specifies bits implemented for both interrupts.
+
+If the actual bits assigned or implemented are fewer than 8, then these bits are left-justified and appended with 1’s for the lower missing bits. 
+
+For example, if the \texttt{nlbits > zic\_int\_ctl\_bits}, then the lower bits of the 8-bit, interrupt level are assumed to be all 1’s. Similarly, if \texttt{nlbits < 8}, then the lower bits of the 8-bit interrupt level are assumed to be all 1’s. Table \ref{tab:interrupt-level} shows how levels are encoded for these cases.
+
+\vspace{1.25cm}
+\begin{table}[H]
+    \centering
+    \caption{Encoding and Interrupt Levels}
+    \label{tab:interrupt-level}
+    \vspace{0.75cm}
+    \begin{tabular}{|c|c|c|}
+    \hline
+        \textbf{No.} & & \\
+        \textbf{of} & \textbf{Encoding\footnotemark} & \textbf{Interrupt Levels}\\
+        \textbf{Bits} & & \\ \hline \hline
+         0 & \texttt{........} & 255 \\ \hline
+         1 & \texttt{l.......} & 127, 255 \\ \hline
+         2 & \texttt{ll......} & 63, 127, 191, 255  \\ \hline
+         3 & \texttt{lll.....} & 31, 63, 95, 127, 159, 191, 223, 255 \\ \hline
+         4 & \texttt{llll....} & 15,31,47,63,79,95,111,127,143,159,175,191,207,223,239,255 \\ \hline
+    \end{tabular}
+\end{table}
+\vspace{0.25cm}
+
+\footnotetext{
+
+"\texttt{l}" bits are available variable bits for level specification
+
+"\texttt{.}" bits are non-existent bits for level encoding, assumed to be 1
+
+If \texttt{nlbits}=0, then all interrupts are treated as level 255
+
+}
+
+Examples of \texttt{zic\_cfg} setting are shown in Table \ref{tab:zic-cfg-examples}.
+
+\vspace{1.25cm}
+\begin{table}[H]
+    \centering
+    \caption{ZIC Configuration Example for Interrupt Levels \& Priorities}
+    \label{tab:zic-cfg-examples}
+    \vspace{0.75cm}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+        \textbf{\texttt{zic\_int\_ctl\_bits\footnotemark}} & \textbf{\texttt{nlbits}} & \textbf{\texttt{zic\_int\_ctl[i]}} & \textbf{Interrupt Levels}\\ \hline \hline
+         0 & 2 & \texttt{........} & 255 \\ \hline
+         1 & 2 & \texttt{l.......} & 127, 255 \\ \hline
+         2 & 2 & \texttt{ll......} & 63, 127, 191, 255  \\ \hline
+         3 & 3 & \texttt{lll.....} & 31, 63, 95, 127, 159, 191, 223, 255 \\ \hline
+         4 & 1 & \texttt{lppp....} & 127, 255 \\ \hline
+         6 & 3 & \texttt{lllppp..} & 31, 63, 95, 127, 159, 191, 223, 255 \\ \hline
+    \end{tabular}
+\end{table}
+\vspace{0.25cm}
+
+\footnotetext{
+
+"\texttt{.}" bits are non-existent bits for level encoding, assumed to be 1
+
+``\texttt{l}" bits are available variable bits for level specification
+
+``\texttt{p}" bits are available variable bits for priority specification
+}
+
+\subsection{Specifying Interrupt Priority}
+
+The least significant bits in \texttt{zic\_int\_ctl\_[i]} that are not configured to be part of the interrupt level, are part of interrupt priority, which are used to prioritize among interrupts pending and enabled at the same privilege mode and interrupt level. The highest-priority interrupt at a given privilege mode and interrupt level is taken first. 
+
+In case there are multiple pending-and-enabled interrupts at the same highest priority, the highest-numbered interrupt is taken first. In other words, when privilege mode, level, and priority are all identical the highest-numbered interrupt wins in a tie.
+
+Any implemented priority bits are treated as the most significant bits of an 8-bit unsigned integer with lower unimplemented bits set to 1. 
+
+For example, with one priority bit \texttt{(p111\_1111)}, interrupts can be set to have priorities 127 or 255, and with two priority bits \texttt{(pp11\_1111)}, interrupts can be set to have priorities 63, 127, 191, or 255.
+
+\section{General Interrupt Handling}
+\label{sec:general-interrupt-handling}
+The ZIC recognizes external interrupt requests and captures the interrupts that are supported. The ZIC maintains a state machine for each supported interrupt and all the operations are dependent on the interrupt state.
+
+The ZIC interrupt handling sequence is
+
+\begin{enumerate}
+    \item The ZIC checks for the interrupt enable.
+    \item The ZIC updates the pending status and assigns level priorities to the interrupts that are asserted.
+    \item The ZIC compares level priorities of all pending interrupts and produces the highest next pending interrupt.
+    \item The ZIC checks if the highest pending interrupt has sufficient priority.
+    \item The ZIC sends an interrupt request to the core.
+    \item The ZIC detects the processor acknowledging the interrupt request.
+    \item The states and values are updated in the memory\-mapped registers and CSRs.
+\end{enumerate}
+
+In more detail, the steps are as follows
+
+\begin{enumerate}
+    \item The ZIC checks for the Local interrupt enable, which is controlled by the corresponding \texttt{zic\_int\_en[i]} register’s $0^{th}$ bit. Only enabled interrupts are considered by the Priority Resolver, else the corresponding interrupt will be ignored.
+    \item If an enabled interrupt is asserted by the source, the status of that interrupt is changed to pending by setting the corresponding \texttt{zic\_int\_p[i]} register’s $0^{th}$ bit.
+    \item Pending interrupts are assigned with level-priority values and are eligible for service by the processor core.
+    \item If multiple enabled interrupts are asserted simultaneously, then level and priority comparison decide the highest next pending interrupt, which is eligible to be sent to the processor core.
+    \item The level of highest pending interrupt is compared against the current level in the \texttt{mintstatus.mil}. After comparison, there are two possible outcomes
+    \begin{enumerate}[label=(\alph*)]
+        \item If the highest priority pending interrupt does not have sufficient priority, that Interrupt will be ignored.
+        \item If the highest priority pending interrupt has sufficient priority, an interrupt request signal is sent to the processor.
+    \end{enumerate}
+    \item Meanwhile, the corresponding Interrupt ID is written into the \texttt{zic\_ack} acknowledge register.
+    \item The processor acknowledges the interrupt request, by reading the interrupt ID from \texttt{zic\_ack} using a read-enable.
+    \item The Interrupt Request Generator detects this read-enable and updates the current interrupt level CSR (\texttt{mintstatus.mil}).
+\end{enumerate}
+
+\section{Control Flow}
+\label{sec:control-flow}
+
+As soon as the interrupt is acknowledged by the core, the program control handles the entry procedure for an interrupt i into machine mode and is as follows,
+\begin{enumerate}
+    \item The cause of the interrupt is updated
+    
+    \texttt{mcause.interrupt = 1; mcause.exception\_code = i;}
+    \item The previous interrupt enable is saved
+    
+    \texttt{mstatus.mpie = (See ISR stack.)}
+    \item The previous privilege mode is saved
+    
+    \texttt{mstatus.mpp = M/S/U}
+    \item The global Interrupts is disabled, interrupts remain disabled unless the ISR enables this.
+    
+    \texttt{mstatus.mie = 0}
+    \item The \texttt{pc} (return address) is saved.
+    
+    \texttt{mepc = Interrupted pc.}
+    \item The \texttt{pc} is updated.
+    \begin{enumerate}
+        \item Direct Mode i.e., \texttt{mtvec.mode == 0}, then 
+
+        \texttt{pc = mtvec}
+        \item Vectored Mode i.e.,  \texttt{mtvec.mode == 1}, then 
+        
+        \texttt{pc = mtvec+(i$\times$4)}
+    \end{enumerate}
+\end{enumerate}
+
+Interrupts are enabled by the ISR to support interrupt nesting.
+
+\section{Interrupt Service Routine}
+\label{sec:isr}
+
+\section{Interrupt Exit Flow}
+\label{sec:interrupt-exit-flow}
+
+The exit procedure for a machine interrupt when \texttt{mret} is executed is as follows,
+
+\begin{enumerate}
+    \item The Interrupt Enable is restored.
+    
+    \texttt{mstatus.mie = mstatus.mpie}
+    \item The Privilege mode is restored.
+    
+    \texttt{M/S/U = mstatus.mpp}
+    \item The \texttt{pc} is restored.
+    
+    \texttt{pc = mepc}
+\end{enumerate}
+

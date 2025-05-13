@@ -1,0 +1,22 @@
+\chapter{Introduction}
+This chapter gives an introduction to JTAG  and information about the terminology used in this document. It contains the following sections:
+\begin{itemize}
+    \item \hyperref[sec:about-jtag]{About JTAG}
+    \item \hyperref[sec:terminology]{Terminology}
+\end{itemize}
+\newpage
+
+\section{About JTAG}
+\label{sec:about-jtag}
+As printed circuit boards (PCBs) become more complex, the need for thorough testing is increasingly important. Advances in surface mount packaging and PCB manufacturing have resulted in smaller boards, making traditional test methods harder to implement.
+
+In the 1980s, the Joint Test Action Group (JTAG) developed a specification for boundary-scan testing that was later standardized as the IEEE Std. 1149.1 specification. This boundary-scan test (BST) architecture offers the capability to efficiently test components and pin connections without using physical test probes on PCBs. 
+
+Boundary-scan cells in a device force signals onto pins or capture data from pin or logic array signals. Forced test data is serially shifted into the boundary-scan cells. Captured data is serially shifted out and externally compared with expected results.
+
+JTAG/IEEE 1149.1 standard is a common platform for device, board and system level testing and debugging. The JTAG port acts as the interaction point between the external world and the devices and it also provides access to the internal components for the purpose of circuit debug and configuration.
+
+In JTAG, testing and debugging is carried through one of the main hardware components, Test Access Port (TAP) which contains four mandatory pins (TDI, TMS, TCK, TDO) and an optional pin for asynchronous reset (TRST). A TAP/JTAG controller is a module that controls and coordinates the operations of the entire test architecture.
+
+\section{Terminology}
+\label{sec:terminology}

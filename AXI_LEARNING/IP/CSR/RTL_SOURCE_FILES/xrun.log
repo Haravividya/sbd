@@ -1,0 +1,212 @@
+xrun(64): 20.09-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.09-s009: Started on Apr 09, 2023 at 22:41:34 IST
+xrun
+	-sv
+	csr_read_mux.sv
+	csr_register_file.sv
+	csr_top.sv
+	mhpm_counter_top.sv
+file: csr_read_mux.sv
+	module worklib.csr_read_mux:sv
+		errors: 0, warnings: 0
+file: csr_register_file.sv
+	module worklib.csr_register_file:sv
+		errors: 0, warnings: 0
+	module worklib.data_mem_max_addr:sv
+		errors: 0, warnings: 0
+	module worklib.zic_base_csr:sv
+		errors: 0, warnings: 0
+	module worklib.mintstatus_csr:sv
+		errors: 0, warnings: 0
+	module worklib.minstret_csr:sv
+		errors: 0, warnings: 0
+	module worklib.mcycle_csr:sv
+		errors: 0, warnings: 0
+	module worklib.mcounter_inhibit_csr:sv
+		errors: 0, warnings: 0
+	module worklib.mtvec_csr:sv
+		errors: 0, warnings: 0
+	module worklib.mepc_csr:sv
+		errors: 0, warnings: 0
+	module worklib.mie_csr:sv
+		errors: 0, warnings: 0
+	module worklib.mip_csr:sv
+		errors: 0, warnings: 0
+	module worklib.mtval_csr:sv
+		errors: 0, warnings: 0
+	module worklib.mcause_csr:sv
+		errors: 0, warnings: 0
+	module worklib.mscratch_csr:sv
+		errors: 0, warnings: 0
+	module worklib.mstatus_csr:sv
+		errors: 0, warnings: 0
+	module worklib.mhardid_csr:sv
+		errors: 0, warnings: 0
+	module worklib.mimpid_csr:sv
+		errors: 0, warnings: 0
+	module worklib.mvendorid_csr:sv
+		errors: 0, warnings: 0
+	module worklib.march_csr:sv
+		errors: 0, warnings: 0
+	module worklib.misa_csr:sv
+		errors: 0, warnings: 0
+	module worklib.dcsr:sv
+		errors: 0, warnings: 0
+	module worklib.dpc:sv
+		errors: 0, warnings: 0
+	module worklib.uart_reset_csr:sv
+		errors: 0, warnings: 0
+file: csr_top.sv
+	module worklib.csr_top:sv
+		errors: 0, warnings: 0
+file: mhpm_counter_top.sv
+	module worklib.mhpm_counter_top:sv
+		errors: 0, warnings: 0
+	module worklib.mhpm_counter_csr:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		csr_top
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+    .*,
+     |
+xmelab: *W,CUVMPW (./csr_top.sv,189|5): port sizes differ in port connection(16/12) for the instance(csr_top)  for child port:  dbg_mode_csr_addr_i.
+    .dpc_o                   (dpc_o                 ),
+                                  |
+xmelab: *W,CUVMPW (./csr_top.sv,430|34): port sizes differ in port connection(20/64) for the instance(csr_top) .
+    .dbg_csr_addr_i          (dbg_mode_csr_addr_i        ),
+                                                |
+xmelab: *W,CUVMPW (./csr_top.sv,432|48): port sizes differ in port connection(16/12) for the instance(csr_top) .
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.dpc:sv <0x70572307>
+			streams:  12, words:  5412
+		worklib.dcsr:sv <0x0710916b>
+			streams:   5, words:  2932
+		worklib.data_mem_max_addr:sv <0x57ac49d4>
+			streams:   2, words:  1274
+		worklib.zic_base_csr:sv <0x2e7df689>
+			streams:   2, words:  1268
+		worklib.mintstatus_csr:sv <0x561fca1e>
+			streams:   4, words:  1587
+		worklib.minstret_csr:sv <0x679a036d>
+			streams:   8, words:  3388
+		worklib.mcycle_csr:sv <0x6c037e3c>
+			streams:   3, words:  1754
+		worklib.mhpm_counter_csr:sv <0x7c8024c6>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x1ace5f7c>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x301cd3b2>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x5652a808>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x0f2e7cfd>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x69600747>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x43b28b89>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x25fcf033>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x49f74506>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x2fb93ebc>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x056bb272>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x6325c9c8>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x3a591d3d>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x5c176687>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x76c5ea49>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x108b91f3>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x2ed28023>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x489cfb99>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x624e7757>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x04000ced>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x5d7cd818>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x3b32a3a2>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x11e02f6c>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x77ae54d6>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x1ba5e1e3>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x7deb9a59>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x57391697>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x31776d2d>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_csr:sv <0x680bb9d8>
+			streams:   5, words:  3304
+		worklib.mhpm_counter_top:sv <0x2c428580>
+			streams:  58, words: 26158
+		worklib.mcounter_inhibit_csr:sv <0x3790e5c8>
+			streams:   3, words:  3679
+		worklib.mtvec_csr:sv <0x5566e9ce>
+			streams:   6, words:  4523
+		worklib.mepc_csr:sv <0x08ca83f9>
+			streams:   3, words:  1699
+		worklib.mie_csr:sv <0x34570c56>
+			streams:   5, words:  4384
+		worklib.mip_csr:sv <0x44cbb237>
+			streams:   5, words:  4384
+		worklib.mtval_csr:sv <0x5e9f81e3>
+			streams:   3, words:  2199
+		worklib.mcause_csr:sv <0x475b91d4>
+			streams:   7, words:  6287
+		worklib.mscratch_csr:sv <0x38d82325>
+			streams:   4, words:  3863
+		worklib.mstatus_csr:sv <0x36d2b2dc>
+			streams:  12, words:  6768
+		worklib.mhardid_csr:sv <0x48f0011e>
+			streams:   2, words:   357
+		worklib.mimpid_csr:sv <0x09887293>
+			streams:   2, words:   357
+		worklib.mvendorid_csr:sv <0x74c227b1>
+			streams:   2, words:   357
+		worklib.misa_csr:sv <0x3e88b894>
+			streams:   3, words:  4389
+		worklib.march_csr:sv <0x07afe987>
+			streams:   2, words:   357
+		worklib.uart_reset_csr:sv <0x211e778b>
+			streams:   4, words:  3845
+		worklib.csr_register_file:sv <0x7bf3d680>
+			streams:  88, words: 38484
+		worklib.csr_read_mux:sv <0x116f6f5d>
+			streams:   4, words: 18835
+		worklib.csr_top:sv <0x418f0844>
+			streams: 179, words: 42127
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		               Instances  Unique
+		Modules:              55      27
+		Registers:           459     347
+		Scalar wires:         54       -
+		Expanded wires:       64       1
+		Vectored wires:      633       -
+		Always blocks:        86      30
+		Cont. assignments:    93      69
+		Pseudo assignments:  317     317
+	Writing initial simulation snapshot: worklib.csr_top:sv
+Loading snapshot worklib.csr_top:sv .................... Done
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /tools/cadence_march2021/XCELIUM2009/tools/xcelium/files/xmsimrc
+xcelium> run
+xmsim: *W,RNQUIE: Simulation is complete.
+xcelium> exit
+TOOL:	xrun(64)	20.09-s009: Exiting on Apr 09, 2023 at 22:41:35 IST  (total: 00:00:01)

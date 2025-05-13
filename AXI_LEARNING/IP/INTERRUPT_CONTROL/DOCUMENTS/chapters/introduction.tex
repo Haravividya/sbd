@@ -1,0 +1,45 @@
+\chapter{Introduction}
+This chapter gives an overview of the ZIC  and information about the terminology used in this document. It contains the following sections:
+\begin{itemize}
+    \item \hyperref[sec:about-zic-arch]{About Zilla Interrupt Controller Architecture}
+    \item \hyperref[sec:terminology]{Terminology}
+\end{itemize}
+\newpage
+
+\section{About Zilla Interrupt Controller architecture}
+\label{sec:about-zic-arch}
+The current architectural version of Zilla Interrupt Controller (ZIC) supports 48 interrupts (External, Software, and Timer). The controller can be scaled to support up to 4096 external interrupts. The role of ZIC is to determine which interrupt has to be sent to the processor core depending on the predefined level and priorities.
+
+ZIC uses a set of memory-mapped registers and Control and Status registers (CSRs) for flow control. Memory-mapped registers are accessible via the software as well as the hardware. ZIC supports preemption of current serving interrupt based on level All the interrupts are taken in the machine privilege mode. ZIC implementation closely floors the RISC-V CLIC specifications.
+
+The features of the Zilla interrupt controller are as follows:
+
+\begin{enumerate}
+    \item Supports up to 48 external interrupts. (Scalable up to 4096).
+    \item Programmable Interrupt Levels and Priorities
+    \begin{enumerate}[label=(\alph*)]
+        \item Up to 8 Levels (for nesting).
+        \item Up to 8 priorities in each level.
+    \end{enumerate}
+    \item Grouping of priority values into levels.
+    \item Memory-mapped registers for control and status.
+    \item Support for both direct mode and vectored mode operation.
+    \item Low-Latency Interrupt Handling.
+    \item An external Non-Maskable Interrupt
+\end{enumerate}
+
+\subsection{ZIC architecture specification version}
+
+\subsection{Changes in version 1.0 of the specification}
+
+\section{Terminology}
+\label{sec:terminology}
+The following sections define architectural terms used in this specification:
+
+\subsection{Basic Terminology}
+
+\subsection{Interrupt States}
+
+\subsection{Interrupt Handling Modes}
+
+\subsection{Register Access Types}

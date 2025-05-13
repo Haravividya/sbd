@@ -1,0 +1,134 @@
+\documentclass[a4paper,12pt,twoside, openany]{book}
+
+\usepackage[a4paper,left=1.25in,right=1in,top=0.75in, bottom=0.75in]{geometry}
+\usepackage{color}
+\usepackage{courier}
+
+\usepackage{caption}
+\captionsetup{labelfont=bf}
+\usepackage{subcaption} 
+
+\usepackage{tgpagella} % text only
+\usepackage{mathpazo}  % math & text
+
+\usepackage{enumitem}
+
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    linkcolor=blue,
+    %anchorcolor [black]
+    %citecolor [green]
+    %filecolor [cyan]
+    %menucolor [red]
+    %runcolor [cyan - same as file color]
+    %urlcolor [magenta]
+    allcolors = blue
+}
+
+%\usepackage{indentfirst}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{6pt}
+
+\usepackage{setspace}
+\singlespacing
+\usepackage{float}
+\usepackage{graphicx}
+\setlength{\intextsep}{-10pt}
+\usepackage{mathtools}
+\numberwithin{equation}{section}
+
+\usepackage[english]{babel}
+\addto{\captionsenglish}{%
+  \renewcommand{\bibname}{References}
+}
+\usepackage{chngcntr}
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+
+\setcounter{tocdepth}{1}
+
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{longtable}
+
+\usepackage[belowskip=-10pt,aboveskip=-15pt]{caption}
+\newcommand{\squeezeup}{\vspace{-2.5mm}}
+ 
+\usepackage{sectsty}
+\chapternumberfont{\Large} 
+%\chaptertitlefont{\Large}
+%\sectionfont{\large}
+%\subsectionfont{\normalsize}
+%\subsubsectionfont{\normalsize}
+
+\renewcommand{\thesection}{\arabic{section}}
+\numberwithin{section}{chapter}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\footnotesize{\textit{\leftmark \\ \rightmark}}}
+\fancyhead[RE,LO]{}
+\fancyfoot[CE,CO]{\footnotesize{\copyright FrenusTech Pvt Ltd}}
+\fancyfoot[LE,RO]{\thechapter-\thepage}
+
+\fancypagestyle{plain}{%
+\fancyhf{}
+\fancyfoot[CE,CO]{\footnotesize{\copyright FrenusTech Pvt Ltd}}
+\fancyfoot[LE,RO]{\thechapter-\thepage}
+}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\begin{document}
+
+\include{title_page}
+
+\setcounter{page}{1}
+\pagenumbering{roman}
+
+\tableofcontents
+\thispagestyle{plain}
+%\listoffigures
+
+%\addcontentsline{toc}{chapter}{List of Figures}
+%\thispagestyle{plain}
+
+%\listoftables
+
+%\addcontentsline{toc}{chapter}{List of Tables}
+
+%\include{acronyms}
+
+\include{preface}
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\include{chapters/introduction}
+
+\include{chapters/overview_partitoning}
+
+\include{chapters/tap}
+
+\include{chapters/instruction_register}
+
+\include{chapters/data_register}
+
+\include{chapters/tdo_mux}
+
+\addcontentsline{toc}{chapter}{References}
+\bibliographystyle{ieeetr}
+\bibliography{References}
+\nocite{*}
+
+\end{document}

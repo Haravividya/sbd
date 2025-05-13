@@ -1,0 +1,571 @@
+\chapter{Programmers' Model}
+This chapter describes the ZIC Memory-mapped registers and CSRs. It contains the following sections:
+\begin{itemize}
+    \item \hyperref[sec:about-programmers-model]{About the Programmers' Model}
+    \item \hyperref[sec:zic-mem-map-register-description]{ZIC memory-mapped register description}
+    \item \hyperref[sec:zic-csr-description]{ZIC CSRs description}
+\end{itemize}
+\newpage
+
+\section{About the Programmers' Model}
+\label{sec:about-programmers-model}
+The programmers’ model provides the software interface to the ZIC. This chapter describes the programmers’ model for the ZIC Priority Resolver and Interrupt Request Generator that operates using ZIC memory-mapped registers and CSRs.
+
+The following sections describe the programmers’ model:
+\begin{itemize}
+    \item \hyperref[subsec:zic-register-mem-map]{ZIC register memory-map}
+    \item \hyperref[subsec:zic-csrs-mem-map]{ZIC CSRs memory-map}
+\end{itemize}
+
+\subsection{ZIC registers memory-map}
+\label{subsec:zic-register-mem-map}
+Zilla core has ZIC registers that are accessed by a separate address region. ZIC registers are accessible by the M-mode software running on the Zilla core. The base address of ZIC memory-mapped registers is specified by \texttt{mzicbase} machine CSR.
+
+The ZIC supports up to 48 total interrupt inputs. Table \ref{tab:zic-reg-memory-map} has a list of memory-mapped registers for ZIC.
+
+\vspace{1.25cm}
+\begin{table}[H]
+    \centering
+    \caption{ZIC register memory-map}
+    \label{tab:zic-reg-memory-map}
+    \vspace{0.75cm}
+    \begin{tabular}{l l l l}
+    \hline 
+        \textbf{Offset} & \textbf{Name} & \textbf{Type} & \textbf{Description}  \\ \hline \hline
+        \texttt{0x0000} & \texttt{\hyperref[subsec:zic-cfg]{zic\_cfg}} & R & ZIC Configuration Register \\ \hline
+        \texttt{0x0004} & \texttt{\hyperref[subsec:zic-info]{zic\_info}} & R & ZIC Information Register \\ \hline
+        \texttt{0x0800} & \texttt{\hyperref[subsec:zic-nxtp-int]{zic\_nxtp\_int}} & R & ZIC Next-Pending Interrupt Register \\ \hline
+        \texttt{0x0804} & \texttt{\hyperref[subsec:zic-ack]{zic\_ack}} & R & ZIC Acknowledgement Register \\ \hline
+         \texttt{0x0808} & \texttt{\hyperref[subsec:zic-eoi]{zic\_eoi}} & R & ZIC End-of-Interrupt Register \\ \hline 
+         & & &  \\ \hline
+         \texttt{0x1000} & \texttt{\hyperref[subsec:zic-int-p]{zic\_int\_p\_[0]}} & RW & ZIC Interrupt Pending Register [0] \\ \hline
+         \texttt{0x1001} & \texttt{\hyperref[subsec:zic-int-en]{zic\_int\_en\_[0]}} & RW & ZIC Interrupt Enable Register [0]\\ \hline
+         \texttt{0x1002} & \texttt{\hyperref[subsec:zic-int-attr]{zic\_int\_attr\_[0]}} & R & ZIC Interrupt Attribute Register [0] \\ \hline
+         \texttt{0x1003} & \texttt{\hyperref[subsec:zic-int-ctl]{zic\_int\_ctl\_[0]}} & RW & ZIC Interrupt Control Register [0] \\ \hline
+         : & : & : & : \\ \hline
+         \texttt{0x10BC} & \texttt{\hyperref[subsec:zic-int-p]{zic\_int\_p\_[47]}} & RW & ZIC Interrupt Pending Register [47]\\ \hline
+         \texttt{0x10BD} & \texttt{\hyperref[subsec:zic-int-en]{zic\_int\_en\_[47]}} & RW & ZIC Interrupt Enable Register [47] \\ \hline
+         \texttt{0x10BE} & \texttt{\hyperref[subsec:zic-int-attr]{zic\_int\_attr\_[47]}} & R & ZIC Interrupt Attribute Register [47] \\ \hline
+         \texttt{0x10BF} & \texttt{\hyperref[subsec:zic-int-ctl]{zic\_int\_ctl\_[47]}} & RW & ZIC Interrupt Control Register [47] \\ \hline
+        \end{tabular}
+\end{table}
+
+\subsection{ZIC CSRs memory-map}
+\label{subsec:zic-csrs-mem-map}
+Zilla core has Machine CSRs, some of which are dedicated for interrupt-handling. These CSRs are accessible by ZIC and also by CSR op-codes.
+
+The interrupt-handling CSRs are listed is Table \ref{tab:zic-csr-memory-map}. The changes to existing CSRs and addition of new CSRs for ZIC mode operation are explained in the ZIC CSRs description.
+
+\vspace{1.25cm}
+\begin{table}[H]
+    \centering
+    \caption{ZIC CSRs memory-map}
+    \label{tab:zic-csr-memory-map}
+    \vspace{0.75cm}
+    \begin{tabular}{l l l l}
+    \hline 
+        \textbf{Address} & \textbf{Name} & \textbf{Type} & \textbf{Description} \\ \hline \hline
+        \texttt{} & \texttt{\hyperref[subsec:mstatus]{mstatus}} & RW & Machine Status Register \\ \hline 
+        \texttt{} & \texttt{\hyperref[subsec:mtvec]{mtvec}} & RW & Machine Trap Vector Register \\ \hline
+        \texttt{} & \texttt{\hyperref[subsec:mtvt]{mtvt}} & RW & Machine Trap Vector Table Register \\ \hline
+        \texttt{} & \texttt{\hyperref[subsec:mscratch]{mscratch}} & RW & Machine Scratch Register \\ \hline
+        \texttt{} & \texttt{\hyperref[subsec:mepc]{mepc}} & RW & Machine Exception \texttt{pc} Register \\ \hline
+        \texttt{} & \texttt{\hyperref[subsec:mcause]{mcause}} & RW & Machine Cause Register \\ \hline
+        \texttt{} & \texttt{\hyperref[subsec:mintstatus]{mintstatus}} & RW & Machine Interrupt Status Register \\ \hline
+        \texttt{} & \texttt{\hyperref[subsec:mzicbase]{mzicbase}} & RW & Machine ZIC Base Register \\ \hline
+        \end{tabular}
+\end{table}
+
+\section{ZIC memory-mapped register description}
+\label{sec:zic-mem-map-register-description}
+
+\subsection{ZIC Configuration Register, \texttt{zic\_cfg}}
+\label{subsec:zic-cfg}
+
+ZIC has a single memory-mapped 8-bit global configuration register, that defines how many privilege modes are supported, how the \texttt{\hyperref[subsec:zic-int-ctl]{zic\_int\_ctl\_[i]}} registers are subdivided into level and priority fields, and whether selective hardware vectoring is supported.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 9cm]{images/zic_cfg.png}
+    \label{fig:zic_cfg}
+\end{figure}
+\vspace{0.25cm}
+
+\vspace{0.5cm}
+\begin{table}[H]
+    \label{tab:zic_cfg}
+        \centering
+        \begin{tabular}{l l p{8cm} c c}
+         \hline 
+         \textbf{Bits} & \textbf{Name} & \textbf{Description} & \textbf{Access} & \textbf{Preset}\\ \hline \hline
+         [7] & reserved & - & - & 0 \\ \hline
+         [6:5] & \texttt{nmbits} & Specifies how many bits are physically implemented in \texttt{zic\_int\_attr\_[i].mode} to represent an input i's privilege mode.
+         
+         0: M-mode Only
+         
+         1: M/U Modes
+         
+         2: M/U/S Modes
+         
+         3: Reserved & R & 0 \\ \hline
+         [4:1] & \texttt{nlbits} & Indicates how many upper bits in \texttt{zic\_int\_ctl\_[i]} are assigned to encode the interrupt levels. 
+         
+         Valid values are 0-8. & R & 3\\ \hline
+         [0] & \texttt{nvbits} & Specifies whether the selective interrupt hardware vectoring feature is implemented or not.
+         
+         0: selective interrupt hardware vectoring is not implemented.
+         
+         1: selective interrupt hardware vectoring is implemented. & R & 0\\ \hline
+         \end{tabular}
+\end{table}
+
+\subsection{ZIC Information Register, \texttt{zic\_info}}
+\label{subsec:zic-info}
+
+This is an 8-bit register that holds information such as number of triggers implemented, number of interrupts supported, architecture and implementation version which are useful for debugging.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 15.25cm]{images/zic_info.png}
+    \label{fig:zic_cfg}
+\end{figure}
+\vspace{0.25cm}
+
+\vspace{0.5cm}
+\begin{table}[H]
+    \label{tab:zic_info}
+        \centering
+        \begin{tabular}{l l p{6cm} c c}
+         \hline 
+         \textbf{Bits} & \textbf{Name} & \textbf{Description} & \textbf{Access} & \textbf{Preset}\\ \hline \hline
+         [31] & reserved & - & - & 0 \\ \hline
+         [30:25] & \texttt{num\_trigger} & Specifies the number of maximum interrupt triggers supported in this implementation.
+         
+         Valid values are 0-32. & R & 0\\ \hline
+         [24:21] & \texttt{zic\_int\_ctl\_bits\footnotemark} & Specifies how many hardware bits are implemented in the \texttt{zic\_int\_ctl} registers. 
+
+         Valid values are 0-8. & R & 6\\ \hline
+         [20:17] & \texttt{arch\_version} & Specifies Architecture Version. & R & 0\\ \hline
+         [16:13] & \texttt{impl\_version} & Specifies Implementation Version. & R & 0 \\ \hline
+         [12:10] & \texttt{num\_interrupts} & Specifies the actual number of maximum interrupt inputs supported in this implementation & R & 47 \\ \hline
+         \end{tabular}
+\end{table}
+
+\footnotetext{The implemented bits are kept left-justified in the most significant bits of each 8-bit \texttt{zic\_int\_ctl\_[i]} register, with the lower unimplemented bits treated as hardwired to 1.}
+
+\subsection{ZIC Next-Pending Interrupt Register, \texttt{zic\_nxtp\_int}}
+\label{subsec:zic-nxtp-int}
+This is an 8-bit register that holds the level of highest pending interrupt.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 9cm]{images/zic_nxtp_int.png}
+    \label{fig:zic_nxtp_int}
+\end{figure}
+\vspace{0.25cm}
+
+\vspace{0.5cm}
+\begin{table}[H]
+    \label{tab:zic_nxtp_int}
+        \centering
+        \begin{tabular}{l l p{7cm} c c}
+         \hline 
+         \textbf{Bits} & \textbf{Name} & \textbf{Description} & \textbf{Access} & \textbf{Preset}\\ \hline \hline
+         [7:0] & \texttt{zic\_nxtp\_int} & This register will be written with the highest level of pending interrupt after priority resolution. & RW & 0\\ \hline
+        \end{tabular}
+\end{table}
+\vspace{0.5cm}
+
+Priority Resolver performs a comparison of all the pending interrupts by comparing the local buffers to check which interrupt has the highest level-priority value. At the end of the comparison, the level-priority value of that interrupt is written to this register.
+
+Interrupt Request Generator reads this register and compares it with the current interrupt level form \texttt{\hyperref[subsec:mintstatus]{mintstatus}} and decides whether the highest pending interrupt has sufficient priority.
+
+\subsection{ZIC Acknowledgement Register, \texttt{zic\_ack}}
+\label{subsec:zic-ack}
+This is an 8-bit register that holds the ID value of the requested interrupt, before the acknowledgment from the processor.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 9cm]{images/zic_ack.png}
+    \label{fig:zic_ack}
+\end{figure}
+\vspace{0.25cm}
+
+\vspace{0.5cm}
+\begin{table}[H]
+    \label{tab:zic_ack}
+        \centering
+        \begin{tabular}{l l p{8cm} c c}
+         \hline 
+         \textbf{Bits} & \textbf{Name} & \textbf{Description} & \textbf{Access} & \textbf{Preset}\\ \hline \hline
+         [7:0] & \texttt{zic\_ack} & This register will be read by the processor to serve the interrupt. & RW & 0\\ \hline
+        \end{tabular}
+\end{table}
+\vspace{0.5cm}
+
+ When the processor reads this register, Interrupt Request Generator recognizes this read, clears the pending bit in \texttt{zic\_int\_p\_[i]}, and writes the level-priority value into \texttt{mintstatus} CSR.
+
+\subsection{ZIC End-of-Interrupt Register, \texttt{zic\_eoi}}
+\label{subsec:zic-eoi}
+This is an 8-bit register that holds the ID value of interrupt currently being served.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 9cm]{images/zic_eoi.png}
+    \label{fig:zic_eoi}
+\end{figure}
+\vspace{0.25cm}
+
+\vspace{0.5cm}
+\begin{table}[H]
+    \label{tab:zic_eoi}
+        \centering
+        \begin{tabular}{l l p{8cm} c c}
+         \hline 
+         \textbf{Bits} & \textbf{Name} & \textbf{Description} & \textbf{Access} & \textbf{Preset}\\ \hline \hline
+         [7:0] & \texttt{zic\_eoi} & The processor writes the ID of the interrupt into this register once it completes executing the ISR. & RW & 0\\ \hline
+        \end{tabular}
+\end{table}
+\vspace{0.5cm}
+
+\subsection{ZIC Interrupt Pending Registers, \texttt{zic\_int\_p\_[i]}}
+\label{subsec:zic-int-p}
+Every interrupt supported by the platform has a dedicated interrupt pending register and occupies one byte in the memory map for ease of access. The pending bit is located in bit 0 of the byte.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 9cm]{images/zic_int_p.png}
+    \label{fig:zic_int_p}
+\end{figure}
+\vspace{0.25cm}
+
+\vspace{0.5cm}
+\begin{table}[H]
+    \label{tab:zic_int_p}
+        \centering
+        \begin{tabular}{l l p{8cm} c c}
+         \hline 
+         \textbf{Bits} & \textbf{Name} & \textbf{Description} & \textbf{Access} & \textbf{Preset} \\ \hline \hline
+         [7:1] & reserved & - & - & 0 \\ \hline
+         [0] & p & 0: Interrupt is requested from the source
+         
+         1: Interrupt is de-asserted from the source
+ & RW & 0\\ \hline
+        \end{tabular}
+\end{table}
+\vspace{0.5cm}
+
+If the interrupt line is enabled globally and is asserted from the source, the Priority Resolver sets the corresponding interrupt pending register bit.
+
+Priority Resolver will clear this bit when the End of Interrupt signal is detected.
+
+\subsection{ZIC Interrupt Enable Registers, \texttt{zic\_int\_en\_[i]}}
+\label{subsec:zic-int-en}
+
+Every interrupt supported by the platform has a dedicated interrupt enable register and occupies one byte in the memory map for ease of access. This enable bit is located in bit 0 of the byte.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 9cm]{images/zic_int_en.png}
+    \label{fig:zic_int_en}
+\end{figure}
+\vspace{0.25cm}
+
+\vspace{0.5cm}
+\begin{table}[H]
+    \label{tab:zic_int_en}
+        \centering
+        \begin{tabular}{l l p{8cm} c c}
+         \hline 
+         \textbf{Bits} & \textbf{Name} & \textbf{Description} & \textbf{Access} & \textbf{Preset}\\ \hline \hline
+         [7:1] & reserved & - & - & 0 \\ \hline
+         [0] & en & 0: Interrupt is disabled
+         
+         1: Interrupt is enabled & RW & 0\\ \hline
+        \end{tabular}
+\end{table}
+\vspace{0.5cm}
+
+\subsection{ZIC Interrupt Attribute Registers, \texttt{zic\_int\_attr\_[i]}}
+\label{subsec:zic-int-attr}
+
+This is an 8-bit register that specify various attributes such as privilege mode, trigger type and hardware vectoring for each interrupt.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 9cm]{images/zic_int_attr.png}
+    \label{fig:zic_int_attr}
+\end{figure}
+\vspace{0.5cm}
+
+\vspace{0.5cm}
+\begin{table}[H]
+    \label{tab:zic_int_attr}
+        \centering
+        \begin{tabular}{l l p{8cm} c c}
+         \hline 
+         \textbf{Bits} & \textbf{Name} & \textbf{Description} & \textbf{Access} & \textbf{Preset}\\ \hline \hline
+         [7:6] & mode & Specifies which privilege mode this interrupt operates in
+         
+         11: machine mode 
+         
+         01: supervisor mode
+         
+         00: user mode & R & 3 \\ \hline
+         [5:3] & reserved & - & - & 0 \\ \hline
+         [2:1] & trig & Specifies the trigger type and polarity for each interrupt
+         
+         00: Positive level-triggered
+         
+         01: Positive edge-triggered
+         
+         10: Negative level-triggered
+         
+         11: Negative edge-triggered & R & \\ \hline
+         [0] & shv & Selective Hardware Vectoring & R & \\ \hline
+        \end{tabular}
+\end{table}
+\vspace{0.5cm}
+
+\subsection{ZIC Interrupt Control Registers, \texttt{zic\_int\_ctl\_[i]}}
+\label{subsec:zic-int-ctl}
+
+This is an 8-bit memory-mapped register to control the interrupt pre-emption (nesting) using levels and priorities. The number of bits implemented in this register is specified by a fixed parameter \texttt{zic\_int\_ctl\_bits} (in \texttt{zic\_info}), which has a value between 0 to 8. 
+
+The implemented bits are kept left-justified in the most significant bits of each 8-bit \texttt{zic\_int\_ctl\_[i]} register, with the lower unimplemented bits treated as hardwired to 1.
+
+These control bits are interpreted as level and priority according to the setting in the ZIC
+Configuration register (\texttt{zic\_cfg.nlbits}).
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 9cm]{images/zic_int_ctl.png}
+    \label{fig:zic_int_ctl}
+\end{figure}
+\vspace{0.25cm}
+
+\vspace{0.5cm}
+\begin{table}[H]
+    \label{tab:zic_int_ctl}
+        \centering
+        \begin{tabular}{l l p{8cm} c c}
+         \hline 
+         \textbf{Bits} & \textbf{Name} & \textbf{Description} & \textbf{Access} & \textbf{Preset}\\ \hline \hline
+         [7:0] & \texttt{zic\_int\_ctl} & Specifies the Level and Priority of the interrupt & RW & 0\\ \hline
+        \end{tabular}
+\end{table}
+\vspace{0.5cm}
+
+When an interrupt is enabled and the corresponding pending bit is set, Priority Resolver loads the level-priority value into a local buffers, holding the pending bit and level-priority value.
+
+\section{ZIC CSRs Description}
+\label{sec:zic-csr-description}
+
+\subsection{Machine Status Register, \texttt{mstatus}}
+\label{subsec:mstatus}
+
+This is a 64-bit CSR that keeps track of and controls the hart's current operating state.
+
+\texttt{mie} is hardwired to zero in ZIC mode, replaced by separate memory-mapped interrupt enable registers (\texttt{zic\_int\_en\_[i]}).
+
+\texttt{mip} is hardwired to zero in ZIC mode, replaced by separate memory-mapped interrupt pending registers (\texttt{zic\_int\_p\_[i]}).
+
+Writes to \texttt{mie/mip} will be ignored and will not trap (i.e., no access faults). 
+
+\subsection{Machine Trap Vector Register, \texttt{mtvec}}
+\label{subsec:mtvec}
+
+This is a 64-bit CSR that holds trap vector configuration, consisting of a vector base address (BASE) and a vector mode (MODE).
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 15.25cm]{images/csr_mtvec.png}
+    \label{fig:csr_mtvec}
+\end{figure}
+\vspace{0.25cm}
+
+\vspace{0.5cm}
+\begin{table}[H]
+    \label{tab:csr_mtvec}
+        \centering
+        \begin{tabular}{l l p{8cm} c c}
+         \hline 
+         \textbf{Bits} & \textbf{Name} & \textbf{Description} & \textbf{Access} & \textbf{Preset}\\ \hline \hline
+         [63:2] & BASE & Specifies the base address & WARL & 0 \\ \hline
+         [1:0] & MODE & Specifies the mode of operation
+         
+         0: Direct - All exceptions are in Direct mode 
+         
+         \hspace{1cm} \texttt{pc} = BASE.
+         
+         1: Vectored - All asynchronous interrupts are in Vectored mode
+         
+         \hspace{1cm} \texttt{pc} = BASE + (4 $\times$ cause).
+         
+         $\geq$ 2: Reserved & WARL & 0\\ \hline
+        \end{tabular}
+\end{table}
+\vspace{0.5cm}
+
+\subsection{Machine Trap Vector Table Register, \texttt{mtvt}}
+\label{subsec:mtvt}
+
+This is a 64-bit CSR that holds the base address of the trap vector table.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 15.25cm]{images/csr_mtvt.png}
+    \label{fig:csr_mtvt}
+\end{figure}
+\vspace{0.25cm}
+
+It is aligned on a 64-byte or greater power-of-two boundary. 
+
+The actual alignment can be determined by writing ones to the low-order bits then reading them back. Values other than 0 in the low 6 bits of \texttt{xtvt} are reserved.
+
+\subsection{Machine Scratch Register, \texttt{mscratch}}
+\label{subsec:mscratch}
+
+This is a 64-bit CSR dedicated for use by machine mode.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 15.25cm]{images/csr_mscratch.png}
+    \label{fig:csr_mscratch}
+\end{figure}
+\vspace{0.25cm}
+
+Typically, it is used to hold a pointer to a machine-mode hart-local context space and swapped with a user register upon entry to an M-mode trap handler.
+
+\subsection{Machine Exception \texttt{pc} Register, \texttt{mepc}}
+\label{subsec:mepc}
+
+This is a 64-bit register that stores the \texttt{pc} value when normal execution is interrupted.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 15.25cm]{images/csr_mepc.png}
+    \label{fig:csr_mepc}
+\end{figure}
+\vspace{0.25cm}
+
+\subsection{Machine Cause Register, \texttt{mcause}}
+\label{subsec:mcause}
+
+This is a 64-bit CSR that holds the information regarding cause of trap and additional book-keeping like previous interrupt status. When a trap is taken into M-mode, \texttt{mcause} is written with a code indicating the event that caused the trap.
+
+Otherwise, mcause is never written by the implementation, though it may be explicitly written by software.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 15.25cm]{images/csr_mcause.png}
+    \label{fig:csr_mcause}
+\end{figure}
+\vspace{0.25cm}
+
+\vspace{0.5cm}
+\begin{table}[H]
+    \label{tab:csr_mcause}
+        \centering
+        \begin{tabular}{l l p{8cm} c c}
+         \hline 
+         \textbf{Bits} & \textbf{Name} & \textbf{Description} & \textbf{Access} & \textbf{Preset} \\ \hline \hline
+         [63] & interrupt & Specifies the type of trap.
+         
+         0: Exception
+         
+         1: Interrupt & RW & 0\\ \hline
+         [62:31] & reserved & - & - & 0\\ \hline
+         [30] & minhv & Specifies the status of the Hardware Vectoring
+         
+         0: End of successful hardware vectoring
+         
+         1: Start of hardware vectoring & R & 0\\ \hline
+         [29:28] & mpp & Previous privilege mode
+         
+         (same as mstatus.mpp) & R & 3\\ \hline
+         [27] & mpie & Previous Interrupt Enable & R & 0\\ \hline
+         [26:24] & reserved & - & - & 0\\ \hline
+         [23:16] & mpil & Previous interrupt level & R \\ \hline
+         [15:12] & reserved & - & - & 0\\ \hline
+         [11:0] & excode & Exception/interrupt code & WARL & 0\\ \hline
+        \end{tabular}
+\end{table}
+\vspace{0.5cm}
+
+\subsection{Machine Interrupt Status, \texttt{mintstatus}}
+\label{subsec:mintstatus}
+
+This is a 64-bit CSR that holds the active interrupt level for machine privilege mode. The primary reason to expose these fields is to support debugging.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 15.25cm]{images/csr_mintstatus.png}
+    \label{fig:csr_mintstatus}
+\end{figure}
+\vspace{0.25cm}
+
+\vspace{0.5cm}
+\begin{table}[H]
+    \label{tab:csr_mintstatus}
+        \centering
+        \begin{tabular}{l l p{8cm} c c}
+         \hline 
+         \textbf{Bits} & \textbf{Name} & \textbf{Description} & \textbf{Access} & \textbf{Preset}\\ \hline \hline
+         [63:32] & reserved & - & - & 0\\ \hline
+         [31:24] & mil & Specifies Machine-mode active Interrupt Level & R & 0\\ \hline
+         [23:16] & reserved & - & - & 0\\ \hline
+         [15:8] & sil & Specifies Supervisor-mode active Interrupt Level
+         
+         This field is harwired to 0. & R & 0\\ \hline
+         [7:0] & uil & Specifies User-mode active Interrupt Level
+         
+         This field is harwired to 0. & R & 0\\ \hline
+        \end{tabular}
+\end{table}
+\vspace{0.5cm}
+
+Interrupt Request Generator reads \texttt{mil} value and compares it with the \linebreak \texttt{zic\_nxtp\_int} value to decide whether the next pending interrupt has sufficient level priority. 
+
+If the new interrupt has sufficient priority, then the Interrupt Request Generator generates interrupt requests to the core processor and writes corresponding Interrupt ID into the \texttt{zic\_ack} register.
+
+
+\subsection{Machine ZIC Base Register, \texttt{mzicbase}}
+\label{subsec:mzicbase}
+
+This is a 64 - bit  CSR that stores the base address of the memory-mapped ZIC registers.
+
+\vspace{0.5cm}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 15.25cm]{images/csr_mzicbase.png}
+    \label{fig:csr_mzicbase}
+\end{figure}
+\vspace{0.25cm}
+
+\vspace{0.5cm}
+\begin{table}[H]
+    \label{tab:csr_mzicbase}
+        \centering
+        \begin{tabular}{l l p{8cm} c c}
+         \hline 
+         \textbf{Bits} & \textbf{Name} & \textbf{Description} & \textbf{Access} & \textbf{Preset}\\ \hline \hline
+         [63:0] & mzicbase & Base address for ZIC memory-mapped register & R & 0\\ \hline
+        \end{tabular}
+\end{table}
+\vspace{0.5cm}

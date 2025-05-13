@@ -1,0 +1,9 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-sv
+zic_mmr_ctrl.sv
+zic_mmr_op_mux.sv
+zic_mmr_reg_file.sv
+zic_mmr_top.sv

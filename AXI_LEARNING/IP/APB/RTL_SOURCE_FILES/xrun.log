@@ -1,0 +1,38 @@
+xrun(64): 20.09-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.09-s009: Started on Apr 10, 2023 at 13:23:57 IST
+xrun
+	-sv
+	APB_Master.sv
+Recompiling... reason: file './APB_Master.sv' is newer than expected.
+	expected: Mon Apr 10 13:14:37 2023
+	actual:   Mon Apr 10 13:23:26 2023
+file: APB_Master.sv
+	module worklib.apb_master:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		apb_master
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.apb_master:sv <0x22f05785>
+			streams:   4, words:  1162
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		            Instances  Unique
+		Modules:            1       1
+		Registers:          9       9
+		Scalar wires:       3       -
+		Vectored wires:     3       -
+		Always blocks:      3       3
+		Cont. assignments:  0       2
+	Writing initial simulation snapshot: worklib.apb_master:sv
+Loading snapshot worklib.apb_master:sv .................... Done
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+xcelium> source /tools/cadence_march2021/XCELIUM2009/tools/xcelium/files/xmsimrc
+xcelium> run
+xmsim: *W,RNQUIE: Simulation is complete.
+xcelium> exit
+TOOL:	xrun(64)	20.09-s009: Exiting on Apr 10, 2023 at 13:23:58 IST  (total: 00:00:01)
