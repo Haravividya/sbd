@@ -19,6 +19,7 @@ class in_stream_zero_to_three_map_sequence extends uvm_sequence#(ulss_tx);
     `uvm_info(get_type_name(), "in_stream_zero_to_three_map_sequence: starting sequence", UVM_LOW)
     
     if(scenario == 2) begin
+      repeat(2000)
       //------------------------------------------------------------------
       // Phase 1: Configure scheduler registers - OUTPUT STREAM MAPPING
       //------------------------------------------------------------------
